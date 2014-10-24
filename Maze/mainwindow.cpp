@@ -1,10 +1,14 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QDebug>
+#include <QString>
+#include <string>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+
     ui->setupUi(this);
     int i,j;
     length=30;
@@ -19,14 +23,20 @@ MainWindow::MainWindow(QWidget *parent) :
     }
 
     MainWindow::workOnCell(1,1);
+     QString s = "value";
     for (i=0; i<length;i++)
     {
+        s="";
         for(j=0; j<height;j++)
         {
-        qDebug.nospace("%d ",maze[i][j]);
+
+           s+=QString::number(maze[i][j]);
+
+
 
         }
-    qDebug("t");
+         qDebug(s.toLatin1());
+
     }
     qDebug( "End of the generation of the maze" );
 
@@ -39,7 +49,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::workOnCell(int xCell,int yCell)
 {
-qDebug("Start to work with cell %d %d \n",xCell,yCell);
+int i,j;
+//qDebug("Start to work with cell %d %d \n",xCell,yCell);
     maze[xCell][yCell]=0;
             int order[4];
             int storage;
@@ -67,47 +78,51 @@ qDebug("Start to work with cell %d %d \n",xCell,yCell);
             for (i=0;i<4;i++)
             {
 
-                qDebug("%d",order[i]);
+                //qDebug("%d",order[i]);
             }
-            qDebug("\n");
+            //qDebug("\n");
 
             //We have to check the 4 neighbours:
             for (i=0;i<4;i++)
             {
-            switch(order[i])
-            {
-            case 0:
-                xToLook=xCell+2;
-                yToLook=yCell  ;
-                break;
-            case 1:
-                xToLook=xCell;
-                yToLook=yCell+2;
-                break;
-            case 2:
-                xToLook=xCell-2;
-                yToLook=yCell  ;
-                break;
-            case 3:
-                xToLook=xCell;
-                yToLook=yCell-2;
-                break;
-            default:
-                qDebug( "Problem in the order generation" );
-                break;
-            }
-            //Check if the cell to look is in the limits:
-            if ((xToLook>=0)&&(xToLook<length)&&(yToLook>=0)&&(yToLook<height))
-            {
-                if (this->maze[xToLook][yToLook]==1)
-                {
-                    //We have to watch this cell
-                    this->maze[(xToLook+xCell)/2][(yToLook+xCell)/2]=0;
-                    workOnCell(xToLook,yToLook);
-                }
-            }
 
-        }
+                switch(order[i])
+                {
+
+                case 0:
+                    xToLook=xCell+2;
+                    yToLook=yCell  ;
+                    break;
+                case 1:
+                    xToLook=xCell;
+                    yToLook=yCell+2;
+                    break;
+                case 2:
+                    xToLook=xCell-2;
+                    yToLook=yCell  ;
+                    break;
+                case 3:
+                    xToLook=xCell;
+                    yToLook=yCell-2;
+                    break;
+                default:
+                    qDebug( "Problem in the order generation" );
+                    break;
+                }
+                qDebug("%d from %d %d",i,xCell,yCell);
+                //Check if the cell to look is in the limits:
+                if ((xToLook>=0)&&(xToLook<length-1)&&(yToLook>=0)&&(yToLook<height-1))
+                {
+                    if (this->maze[xToLook][yToLook]==1)
+                    {
+                        //We have to watch this cell
+                        this->maze[(xToLook+xCell)/2][(yToLook+yCell)/2]=0;
+                        workOnCell(xToLook,yToLook);
+                        qDebug("Fin de %d %d, i= %d",xToLook,yToLook,i);
+                    }
+                }
+
+            }
 
 
 }

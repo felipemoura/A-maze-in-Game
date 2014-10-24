@@ -17,7 +17,7 @@ public:
     int maze[30][30];
     int x[20][20];
     int y[20][20];
-    int i,j;
+
     int length;
     int height;
     int totalCells;
