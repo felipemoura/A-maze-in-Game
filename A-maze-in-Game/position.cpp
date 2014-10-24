@@ -1,33 +1,34 @@
 #include "position.h"
 
+
+// Constructor
 Position::Position()
 {
-    this->setX (0);
-    this->setY (0);
- }
-
-Position::int getX()
-{
-    return this->x;
+    setX(0);
+    setY(0);
 }
 
-Position::int getY()
+Position::Position (int value1, int value2)
 {
-    return this->y;
+    setX(value1);
+    setY(value2);
 }
 
-Position::void setX (int x)
-{
-    this->x = x;
+
+// Getters
+int Position::getY() const {
+    return y;
 }
 
-Position::void setY (int y)
-{
-    this->y = y;
+int Position::getX() const {
+    return x;
 }
 
-Position::Position (int x, int y)
-{
-    this->x.setX(x);
-    this->y.setY(y);
+// Setters
+void Position::setX(int value) {
+    x = value;
+}
+
+void Position::setY(int value) {
+    y = value;
 }

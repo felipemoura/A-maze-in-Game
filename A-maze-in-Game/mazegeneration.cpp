@@ -2,4 +2,10 @@
 
 MazeGeneration::MazeGeneration()
 {
+
+}
+
+MazeGeneration::int ** mazeGeneration (int)
+{
+
 }

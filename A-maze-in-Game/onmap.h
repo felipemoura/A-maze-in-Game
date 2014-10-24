@@ -7,28 +7,40 @@
 
 class OnMap
 {
+
 public:
-    OnMap();
+    // Constructor
+    OnMap ();
 
+    // Destructor
+    ~OnMap ();
+
+    // Getters
     Player getPlayer2() const;
-    void setPlayer2(const Player &value);
-
     Player getPlayer1() const;
-    void setPlayer1(const Player &value);
+
+    QFrame getWidget() const;
 
     int getWidthGame() const;
-    void setWidthGame(int value);
-
     int getHeightGame() const;
-    void setHeightGame(int value);
 
     int getSizeSquare() const;
-    void setSizeSquare(int value);
-
     int getSizeMaze() const;
-    void setSizeMaze(int value);
 
     int **getMaze() const;
+
+    // Setters
+    void setPlayer1(const Player &value);
+    void setPlayer2(const Player &value);
+
+    void setWidget(const QFrame &value);
+
+    void setWidthGame(int value);
+    void setHeightGame(int value);
+
+    void setSizeSquare(int value);
+    void setSizeMaze(int value);
+
     void setMaze(int **value);
 
 private:
@@ -47,8 +59,8 @@ private:
     int ** maze;
 
     void update ();
-    void collision ();
 
+    void collision ();
 };
 
 #endif // ONMAP_H

@@ -11,9 +11,7 @@ using namespace std;
 class Player
 {
 
-
 private:
-
     Position position;
     Position speed;
 
@@ -25,31 +23,29 @@ private:
     void timerEvent (QTimerEvent);
 
 public:
-    // Getters
-    Position getSpeed ();
-    Position getPosition ();
-    string getString ();
-    QBasicTimer getTimerSlow ();
-    QBasicTimer getTimerFas ();
-
-    // Setters
-    void setSpeed (Position);
-    void setPosition (Position);
-    void setUsername (string);
-    void setTimerSlow (QBasicTimer);
-    void setTimerFast (QBasicTimer);
-
     // Constructors
     Player ();
-    Player (Position, Position, string, QBasicTimer, QBasicTimer);
 
     // Destructors
     ~Player();
 
+    // Getters
+    Position getPosition() const;
+    Position getSpeed() const;
+    string getUsername() const;
+    QBasicTimer getTimerSlow() const;
+    QBasicTimer getTimerFast() const;
+
+    // Setters
+    void setSpeed(const Position &value);
+    void setPosition(const Position &value);
+    void setUsername(const string &value);
+    void setTimerSlow(const QBasicTimer &value);
+    void setTimerFast(const QBasicTimer &value);
+
     // Methods
     Position desiredPosition ();
     void applyBonut (int);
-
 };
 
 #endif // PLAYER_H

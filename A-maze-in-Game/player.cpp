@@ -4,24 +4,8 @@
 Player::Player()
 {
 
-    Position position;
-    Position speed;
-
-    string username;
-
-    QBasicTimer timerSlow;
-    QBasicTimer timerFast;
-
 }
 
-Player::Player(Position position, Position speed, string username, QBasicTimer timerSlow, QBasicTimer timerFast)
-{
-    this->setPosition(position);
-    this->setUsername(speed);
-    this->setUsername(username);
-    this->setTimerSlow(timerSlow);
-    this->setTimerFast(timerFast);
-}
 
 // Destructors
 ~Player()
@@ -30,47 +14,50 @@ Player::Player(Position position, Position speed, string username, QBasicTimer t
 }
 
 // Getters
-Player::Position getSpeed () {
-    return this->speed;
+//
+Position Player::getPosition() const {
+    return position;
 }
 
-Player::Position getPosition () {
-    return this->posistion;
+Position Player::getSpeed() const {
+    return speed;
 }
 
-Player::string getUsername () {
-    return this->username
+string Player::getUsername() const {
+    return username;
 }
 
-Player::QBasicTimer getTimerSlow () {
-    return this->timerSlow;
+QBasicTimer Player::getTimerSlow() const {
+    return timerSlow;
 }
 
-Player::QBasicTimer getTimerFast () {
-    return this->timerFast;
+QBasicTimer Player::getTimerFast() const {
+    return timerFast;
 }
+
 
 // Setters
 //
-Player::void setSpeed (Position speed) {
-    this->speed = speed;
+void Player::setPosition(const Position &value) {
+    position = value;
 }
 
-Player::void setPosition (Position position) {
-    this->position = position;
+void Player::setSpeed(const Position &value) {
+    speed = value;
 }
 
-Player::void setUsername (string username) {
-    this->username = username;
+void Player::setUsername(const string &value) {
+    username = value;
 }
 
-Player::void setTimerSlow (QBasicTimer timerSlow) {
-    this->timerSlow = timerSlow;
+void Player::setTimerSlow(const QBasicTimer &value) {
+    timerSlow = value;
 }
 
-Player::void setTimerFast (QBasicTimer timerFast) {
-    this->timerFast = timerFast;
+void Player::setTimerFast(const QBasicTimer &value) {
+    timerFast = value;
 }
+
 
 // Methods
 Player::Position desiredPosition ()

@@ -9,14 +9,20 @@ private:
     int y;
 
 public:
-    int getX ();
-    int getY ();
-
-    void setX (int);
-    void setY (int);
-
+    // Constructor
     Position ();
     Position (int,int);
+
+    // Destructor
+    ~Position ();
+
+    // Getters
+    int getX() const;
+    int getY() const;
+
+    // Setters
+    void setX(int value);
+    void setY(int value);
 };
 
 #endif // POSITION_H

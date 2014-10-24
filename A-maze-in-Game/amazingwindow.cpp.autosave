@@ -1,5 +1,12 @@
 #include "amazingwindow.h"
 
+// Constructor
+AmazingWindow::AmazingWindow()
+{
+}
+
+// Destructor
+AmazingWindow::~AmazingWindow()
 
 
 // Getters

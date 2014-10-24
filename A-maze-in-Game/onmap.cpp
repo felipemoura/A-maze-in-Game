@@ -1,10 +1,30 @@
 #include "onmap.h"
 
+// Constructor
 OnMap::OnMap()
 {
+
+}
+
+// Destructor
+OnMap::~OnMap()
+{
+
+}
+
+// Methods
+OnMap::void update ()
+{
+
+}
+
+OnMap::void collision ()
+{
+
 }
 
 // Getters
+//
 Player OnMap::getPlayer2() const {
     return player2;
 }
@@ -33,7 +53,13 @@ int **OnMap::getMaze() const {
     return maze;
 }
 
+QFrame OnMap::getWidget() const {
+    return widget;
+}
+
+
 // Setters
+//
 void OnMap::setPlayer2(const Player &value) {
     player2 = value;
 }
@@ -62,9 +88,6 @@ void OnMap::setMaze(int **value){
     maze = value;
 }
 
-
-
-
-
-
-
+void OnMap::setWidget(const QFrame &value) {
+    widget = value;
+}

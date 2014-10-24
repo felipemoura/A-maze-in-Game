@@ -13,19 +13,34 @@ private:
     OnMap map;
     QKeyEvent key;
     QBasicTimer timer;
+
    // Ui ui;
     void on_pushButton_clicked();
     void keyPressedEvent (QKeyEvent);
-
 
 protected:
     void timerEvent(QTimerEvent);
 
 public:
+    // Constructor
     AmazingWindow();
 
+    // Destructor
+    ~AmazingWindow ();
+
+    // Methods
     void newFrame();
     void process_display ();
+
+    // Getters
+    OnMap getMap() const;
+    QKeyEvent getKey() const;
+    QBasicTimer getTimer() const;
+
+    // Setters
+    void setMap(const OnMap &value);
+    void setKey(const QKeyEvent &value);
+    void setTimer(const QBasicTimer &value);
 };
 
 #endif // AMAZINGWINDOW_H
