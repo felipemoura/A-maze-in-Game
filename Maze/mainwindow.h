@@ -13,7 +13,9 @@ class MainWindow : public QMainWindow
 
 public:
     explicit MainWindow(QWidget *parent = 0);
+
     ~MainWindow();
+    
     int maze[30][30];
     int x[20][20];
     int y[20][20];
@@ -26,7 +28,7 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    void MainWindow::workOnCell(int,int);
+    void workOnCell(int,int);
 };
 
 #endif // MAINWINDOW_H
