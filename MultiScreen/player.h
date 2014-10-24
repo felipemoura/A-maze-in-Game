@@ -5,7 +5,7 @@ class Player
 {
 public:
     Player(int , int, int , int );
-    void Player::desiredPosition(int[20][20]);
+    void desiredPosition(int[20][20]);
 
 
     int posX;

@@ -17,7 +17,7 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     void newFrame();
-    void MainWindow::process_display();
+    void process_display();
 
 private slots:
     void on_pushButton_clicked();
