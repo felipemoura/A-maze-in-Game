@@ -4,12 +4,19 @@
 class Position
 {
 
-public:
-
+private:
     int x;
     int y;
 
-    Position();
+public:
+    int getX ();
+    int getY ();
+
+    void setX (int);
+    void setY (int);
+
+    Position ();
+    Position (int,int);
 };
 
 #endif // POSITION_H

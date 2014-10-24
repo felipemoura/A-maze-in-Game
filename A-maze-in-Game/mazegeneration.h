@@ -3,8 +3,11 @@
 
 class MazeGeneration
 {
+
 public:
     MazeGeneration();
+
+    int ** mazeGeneration (int);
 };
 
 #endif // MAZEGENERATION_H

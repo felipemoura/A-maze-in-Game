@@ -2,6 +2,8 @@
 #define MAIN_H
 
 #include <QMainWindow>
+#include <ui.h>
+#include "amazingwindow.h"
 
 namespace Ui {
 class Main;
@@ -17,6 +19,9 @@ public:
 
 private:
     Ui::Main *ui;
+
+    //QApplicaition app;
+   // AmazingWindow window;
 };
 
 #endif // MAIN_H

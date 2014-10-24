@@ -6,6 +6,8 @@
 #include <string>
 #include "position.h"
 
+using namespace std;
+
 class Player
 {
 
@@ -15,7 +17,7 @@ private:
     Position position;
     Position speed;
 
-    std::string username;
+    string username;
 
     QBasicTimer timerSlow;
     QBasicTimer timerFast;
@@ -23,8 +25,28 @@ private:
     void timerEvent (QTimerEvent);
 
 public:
+    // Getters
+    Position getSpeed ();
+    Position getPosition ();
+    string getString ();
+    QBasicTimer getTimerSlow ();
+    QBasicTimer getTimerFas ();
 
-    Player();
+    // Setters
+    void setSpeed (Position);
+    void setPosition (Position);
+    void setUsername (string);
+    void setTimerSlow (QBasicTimer);
+    void setTimerFast (QBasicTimer);
+
+    // Constructors
+    Player ();
+    Player (Position, Position, string, QBasicTimer, QBasicTimer);
+
+    // Destructors
+    ~Player();
+
+    // Methods
     Position desiredPosition ();
     void applyBonut (int);
 
