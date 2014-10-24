@@ -6,8 +6,8 @@ class OnMap
 {
 public:
     OnMap();
-    void OnMap::Collide()  ;
-    void OnMap::Update();
+    void Collide()  ;
+    void Update();
 
     Player* player1;
     Player* player2;
