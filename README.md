@@ -1,6 +1,8 @@
 A-maze-in-Game
 ==============
 
-Project of Software Engineering
+The A-maze-in-Game is a project of Software Engineering.
 
-Have to write something here...
+CSE 361 - Software Engineering
+Department of Computer Science and Engineering
+University of Nebraska Lincoln
