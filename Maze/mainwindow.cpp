@@ -27,12 +27,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
         }
     }
 
-<<<<<<< Updated upstream
     MainWindow::workOnCell(1,1);
 <<<<<<< HEAD
-=======
-    MainWindow::workOnCell(length/2, height/2);
->>>>>>> Stashed changes
      QString s = "value";
     for (i=0; i<length;i++)
     {
