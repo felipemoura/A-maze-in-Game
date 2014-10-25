@@ -1,0 +1,22 @@
+Configuration Management Repository:
+
+In order to keep our project well organized and easy to be divided, we decided to use a Configuration Management Repository. Among all differents ones we chose Git for its simplicity.
+
+Repository location: https://github.com/felipemoura/A-maze-in-Game
+
+Branches:
+	Master
+	Diego, Felipe, Lucas, Stan
+
+For each team member was created a branch. When necessary, each member made changes in its own repository and commited. After the change has been analysed and checked in order to verify if it was working properly, it was merged into the Master branch.
+
+Scenario:
+	Team members A and B
+
+First: checkout in the Master branch if you are not.
+DON'T forget to pull all the changes before going to the invertview. Otherwise, it may occur some conflit we may not be able to solve over there.
+
+(A) change a file (e.g README.txt), commit and push.
+(B) check for any change in the Master branch and then pull it.
+(B) change a file (e.g README.txt), commit and push.
+(A) check for any change in the Master branch and then pull it.
