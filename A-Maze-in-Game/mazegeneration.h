@@ -2,6 +2,7 @@
 #define MAZEGENERATION_H
 
 #define MAZE_SIZE 30
+#define NUMBER_OF_GENERATIONS 100
 
 class MazeGeneration
 {

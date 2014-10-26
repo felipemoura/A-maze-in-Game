@@ -3,12 +3,13 @@
 // Constructor
 OnMap::OnMap()
 {
+    Player ();
+    
     MazeGeneration* desiredMaze = new MazeGeneration ();
     setMaze( desiredMaze->getMaze() );
 
     setWidthGame(desiredMaze->getSize());
     setHeightGame(desiredMaze->getSize());
-
 }
 
 // Destructor

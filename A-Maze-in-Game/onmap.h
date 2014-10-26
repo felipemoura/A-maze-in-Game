@@ -5,7 +5,7 @@
 #include "player.h"
 #include "mazegeneration.h"
 
-class OnMap
+class OnMap : public Player
 {
 
 public:
