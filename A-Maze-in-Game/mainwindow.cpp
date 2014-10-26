@@ -7,6 +7,8 @@
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     onMap = new OnMap ();
+    update();
+
     ui->setupUi(this);
 
     this->setWindowTitle(tr("A-Maze-in-Game"));
@@ -60,9 +62,14 @@ bool MainWindow::eventFilter(QObject *object, QEvent *event)
             speed = player.getSpeed();
 
             if ((player.getY() - speed.getY()) > 0 ){
-                player.setY(player.getY() - speed.getY());
+                this->onMap->collision (PLAYER2, player.getX(), (player.getY() - speed.getY()) );
             }
-            this->onMap->setPlayer2(player);
+
+            
+            //            if ((player.getY() - speed.getY()) > 0 ){
+            //                player.setY(player.getY() - speed.getY());
+            //            }
+            //            this->onMap->setPlayer2(player);
         }
 
         // Left
@@ -70,10 +77,14 @@ bool MainWindow::eventFilter(QObject *object, QEvent *event)
             player = this->onMap->getPlayer2();
             speed = player.getSpeed();
 
-            if ((player.getX() - speed.getX()) > 0 ){
-                player.setX(player.getX() - speed.getX());
+            if ((player.getX() - speed.getX()) > 0 ) {
+                this->onMap->collision (PLAYER2, (player.getX() - speed.getX()), player.getY() );
             }
-            this->onMap->setPlayer2(player);
+
+            //            if ((player.getX() - speed.getX()) > 0 ){
+            //                player.setX(player.getX() - speed.getX());
+            //            }
+            //            this->onMap->setPlayer2(player);
         }
 
         // Down
@@ -82,9 +93,13 @@ bool MainWindow::eventFilter(QObject *object, QEvent *event)
             speed = player.getSpeed();
 
             if (player.getY() + speed.getY() < (BOUNDS)) {
-                player.setY(player.getY() + speed.getY());
+                this->onMap->collision (PLAYER2, player.getX(), (player.getY() + speed.getY()) );
             }
-            this->onMap->setPlayer2(player);
+
+            //            if (player.getY() + speed.getY() < (BOUNDS)) {
+            //                player.setY(player.getY() + speed.getY());
+            //            }
+            //            this->onMap->setPlayer2(player);
         }
 
         // Right
@@ -93,9 +108,13 @@ bool MainWindow::eventFilter(QObject *object, QEvent *event)
             speed = player.getSpeed();
 
             if ((player.getX() + speed.getX()) < BOUNDS) {
-                player.setX(player.getX() + speed.getX());
+                this->onMap->collision (PLAYER2, (player.getX() + speed.getX()), player.getY() );
             }
-            this->onMap->setPlayer2(player);
+
+            //            if ((player.getX() + speed.getX()) < BOUNDS) {
+            //                player.setX(player.getX() + speed.getX());
+            //            }
+            //            this->onMap->setPlayer2(player);
         }
 
         // Player 1 Keys
@@ -105,9 +124,13 @@ bool MainWindow::eventFilter(QObject *object, QEvent *event)
             speed = player.getSpeed();
 
             if ((player.getY() - speed.getY()) > 0 ){
-                player.setY(player.getY() - speed.getY());
+                this->onMap->collision (PLAYER1, player.getX(), (player.getY() - speed.getY()) );
             }
-            this->onMap->setPlayer1(player);
+
+            //            if ((player.getY() - speed.getY()) > 0 ){
+            //                player.setY(player.getY() - speed.getY());
+            //            }
+            //            this->onMap->setPlayer1(player);
         }
 
         // Down
@@ -115,10 +138,14 @@ bool MainWindow::eventFilter(QObject *object, QEvent *event)
             player = this->onMap->getPlayer1();
             speed = player.getSpeed();
 
-            if ((player.getY() + speed.getY()) < BOUNDS ) {
-                player.setY(player.getY() + speed.getY());
+            if (player.getY() + speed.getY() < (BOUNDS)) {
+                this->onMap->collision (PLAYER1, player.getX(), (player.getY() + speed.getY()) );
             }
-            this->onMap->setPlayer1(player);
+
+            //            if ((player.getY() + speed.getY()) < BOUNDS ) {
+            //                player.setY(player.getY() + speed.getY());
+            //            }
+            //            this->onMap->setPlayer1(player);
         }
 
         // Left
@@ -126,10 +153,14 @@ bool MainWindow::eventFilter(QObject *object, QEvent *event)
             player = this->onMap->getPlayer1();
             speed = player.getSpeed();
 
-            if ((player.getX() - speed.getX()) > 0 ){
-                player.setX(player.getX() - speed.getX());
+            if ((player.getX() - speed.getX()) > 0 ) {
+                this->onMap->collision (PLAYER1, (player.getX() - speed.getX()), player.getY() );
             }
-            this->onMap->setPlayer1(player);
+
+            //            if ((player.getX() - speed.getX()) > 0 ){
+            //                player.setX(player.getX() - speed.getX());
+            //            }
+            //            this->onMap->setPlayer1(player);
         }
 
         // Right
@@ -138,12 +169,15 @@ bool MainWindow::eventFilter(QObject *object, QEvent *event)
             speed = player.getSpeed();
 
             if ((player.getX() + speed.getX()) < BOUNDS) {
-                player.setX(player.getX() + speed.getY());
+                this->onMap->collision (PLAYER1, (player.getX() + speed.getX()), player.getY() );
             }
-            this->onMap->setPlayer1(player);
+
+            //            if ((player.getX() + speed.getX()) < BOUNDS) {
+            //                player.setX(player.getX() + speed.getY());
+            //            }
+            //            this->onMap->setPlayer1(player);
         }
 
-        //this->onMap->collision();
         update();
 
         return true;

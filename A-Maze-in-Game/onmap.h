@@ -5,10 +5,16 @@
 #include "player.h"
 #include "mazegeneration.h"
 
-class OnMap : public Player
+#define PLAYER1 1
+#define PLAYER2 2
+
+class OnMap : public Player, public MazeGeneration
 {
 
 public:
+    // Methods
+    void collision (int, int, int);
+
     // Constructor
     OnMap ();
 
@@ -59,7 +65,6 @@ private:
 
     void update ();
 
-    void collision ();
 };
 
 #endif // ONMAP_H

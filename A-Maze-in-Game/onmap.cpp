@@ -1,9 +1,11 @@
 #include "onmap.h"
+#include "mainwindow.h"
+#include <QDebug>
 
 // Constructor
 OnMap::OnMap()
 {
-    Player ();
+    //Player ();
     
     MazeGeneration* desiredMaze = new MazeGeneration ();
     setMaze( desiredMaze->getMaze() );
@@ -24,9 +26,37 @@ void OnMap::update ()
 
 }
 
-void OnMap::collision ()
+void OnMap::collision (int option, int desiredX, int desiredY)
 {
+    //    double x = (desiredX)/TILE_SIZE;
+    //    double auxX = x - (double) (desiredX)/TILE_SIZE;
 
+    //    if (auxX >= 0.5) {
+    //        x+= 0.5;
+    //    }
+
+    //    double y = (desiredY)/TILE_SIZE;
+    //    double auxY = y - (double) (desiredY)/TILE_SIZE;
+
+    //    if (auxY >= 0.5) {
+    //        y+= 0.5;
+    //    }
+
+    int pos = this->getPositionMaze((desiredX)/TILE_SIZE, (desiredY)/TILE_SIZE);
+
+    qDebug() << "pos : " << pos << "desired x : " << desiredX << "desiredY :" << desiredY;
+    if (pos == INVALID) return;
+
+    if (pos == WALL) return;
+
+    if (option == PLAYER1) {
+        player1.setX(desiredX);
+        player1.setY(desiredY);
+
+    } else {
+        player2.setX(desiredX);
+        player2.setY(desiredY);
+    }
 }
 
 // Getters

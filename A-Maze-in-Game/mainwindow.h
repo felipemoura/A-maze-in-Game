@@ -23,8 +23,6 @@ public:
     ~MainWindow();
 
 protected:
-//    void keyPressEvent(QKeyEvent *);
-//    void keyReleaseEvent(QKeyEvent *);
     void paintEvent (QPaintEvent *);
     bool eventFilter(QObject *, QEvent *);
 

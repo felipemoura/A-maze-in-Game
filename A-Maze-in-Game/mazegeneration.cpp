@@ -114,6 +114,15 @@ void MazeGeneration::workOnCell (int xCell,int yCell)
     }
 }
 
+int MazeGeneration::getPositionMaze(int posX, int posY)
+{
+    if ( (posX >= ZERO) && (posY >= ZERO) && (posX < MAZE_SIZE) && (posY < MAZE_SIZE) ){
+        return this->maze[posX][posY];
+    } else {
+        return INVALID;
+    }
+}
+
 // Getters
 int **MazeGeneration::getMaze() const
 {

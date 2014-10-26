@@ -8,7 +8,7 @@
 
                     */
 
-#define START_POSITION 0
+#define START_POSITION 16
 
 class Position
 {
