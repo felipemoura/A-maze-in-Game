@@ -3,8 +3,8 @@
 // Constructors
 Player::Player()
 {
-    this->speed.setX(1);
-    this->speed.setY(1);
+    this->speed.setX(2);
+    this->speed.setY(2);
 }
 
 Player::Player (Position desiredPosition, Position desiredSpeed, string desiredUsername)

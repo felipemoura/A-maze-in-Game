@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "onmap.h"
+#include <QSet>
 
 #define X_SIZE 680
 #define Y_SIZE 480
@@ -29,6 +30,7 @@ protected:
 private:
     OnMap* onMap;
     Ui::MainWindow *ui;
+    QSet<int> pressedKeys;
 };
 
 #endif // MAINWINDOW_H

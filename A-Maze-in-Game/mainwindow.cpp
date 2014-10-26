@@ -53,134 +53,98 @@ bool MainWindow::eventFilter(QObject *object, QEvent *event)
 
     if (event->type() == QEvent::KeyPress) {
         QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
+        pressedKeys += ((QKeyEvent*)event)->key();
 
 
         // Player 2 Keys
         // Up
-        if ( (keyEvent->key() == Qt::Key_W) || (keyEvent->key() == Qt::Key_Z) ) {
+        if ( (keyEvent->key() == Qt::Key_W) || (keyEvent->key() == Qt::Key_Z) || pressedKeys.contains(Qt::Key_Z) || pressedKeys.contains(Qt::Key_W) ) {
             player = this->onMap->getPlayer2();
             speed = player.getSpeed();
 
             if ((player.getY() - speed.getY()) > 0 ){
-                this->onMap->collision (PLAYER2, player.getX(), (player.getY() - speed.getY()) );
+                this->onMap->collision (PLAYER2, UP, player.getX(), (player.getY() - speed.getY()) );
             }
-
-            
-            //            if ((player.getY() - speed.getY()) > 0 ){
-            //                player.setY(player.getY() - speed.getY());
-            //            }
-            //            this->onMap->setPlayer2(player);
         }
 
         // Left
-        if( (keyEvent->key() == Qt::Key_A) || (keyEvent->key() == Qt::Key_Q) ) {
+        if( (keyEvent->key() == Qt::Key_A) || (keyEvent->key() == Qt::Key_Q) || pressedKeys.contains(Qt::Key_A) || pressedKeys.contains(Qt::Key_Q) ) {
             player = this->onMap->getPlayer2();
             speed = player.getSpeed();
 
             if ((player.getX() - speed.getX()) > 0 ) {
-                this->onMap->collision (PLAYER2, (player.getX() - speed.getX()), player.getY() );
+                this->onMap->collision (PLAYER2, LEFT, (player.getX() - speed.getX()), player.getY() );
             }
-
-            //            if ((player.getX() - speed.getX()) > 0 ){
-            //                player.setX(player.getX() - speed.getX());
-            //            }
-            //            this->onMap->setPlayer2(player);
         }
 
         // Down
-        if(keyEvent->key() == Qt::Key_S) {
+        if(keyEvent->key() == Qt::Key_S || pressedKeys.contains(Qt::Key_S)) {
             player = this->onMap->getPlayer2();
             speed = player.getSpeed();
 
             if (player.getY() + speed.getY() < (BOUNDS)) {
-                this->onMap->collision (PLAYER2, player.getX(), (player.getY() + speed.getY()) );
+                this->onMap->collision (PLAYER2, DOWN, player.getX(), (player.getY() + speed.getY()) );
             }
-
-            //            if (player.getY() + speed.getY() < (BOUNDS)) {
-            //                player.setY(player.getY() + speed.getY());
-            //            }
-            //            this->onMap->setPlayer2(player);
         }
 
         // Right
-        if(keyEvent->key() == Qt::Key_D) {
+        if(keyEvent->key() == Qt::Key_D || pressedKeys.contains(Qt::Key_D) ) {
             player = this->onMap->getPlayer2();
             speed = player.getSpeed();
 
             if ((player.getX() + speed.getX()) < BOUNDS) {
-                this->onMap->collision (PLAYER2, (player.getX() + speed.getX()), player.getY() );
+                this->onMap->collision (PLAYER2, RIGHT, (player.getX() + speed.getX()), player.getY() );
             }
-
-            //            if ((player.getX() + speed.getX()) < BOUNDS) {
-            //                player.setX(player.getX() + speed.getX());
-            //            }
-            //            this->onMap->setPlayer2(player);
         }
 
         // Player 1 Keys
         // Up
-        if(keyEvent->key() == Qt::Key_Up) {
+        if ( (keyEvent->key() == Qt::Key_Up ) || pressedKeys.contains(Qt::Key_Up) ) {
             player = this->onMap->getPlayer1();
             speed = player.getSpeed();
 
             if ((player.getY() - speed.getY()) > 0 ){
-                this->onMap->collision (PLAYER1, player.getX(), (player.getY() - speed.getY()) );
+                this->onMap->collision (PLAYER1, UP,  player.getX(), (player.getY() - speed.getY()) );
             }
-
-            //            if ((player.getY() - speed.getY()) > 0 ){
-            //                player.setY(player.getY() - speed.getY());
-            //            }
-            //            this->onMap->setPlayer1(player);
         }
 
         // Down
-        if(keyEvent->key() == Qt::Key_Down) {
+        if ( (keyEvent->key() == Qt::Key_Down) || pressedKeys.contains(Qt::Key_Down) ) {
             player = this->onMap->getPlayer1();
             speed = player.getSpeed();
 
             if (player.getY() + speed.getY() < (BOUNDS)) {
-                this->onMap->collision (PLAYER1, player.getX(), (player.getY() + speed.getY()) );
+                this->onMap->collision (PLAYER1, DOWN, player.getX(), (player.getY() + speed.getY()) );
             }
-
-            //            if ((player.getY() + speed.getY()) < BOUNDS ) {
-            //                player.setY(player.getY() + speed.getY());
-            //            }
-            //            this->onMap->setPlayer1(player);
         }
 
         // Left
-        if(keyEvent->key() == Qt::Key_Left) {
+        if ( (keyEvent->key() == Qt::Key_Left) || pressedKeys.contains(Qt::Key_Left) ) {
             player = this->onMap->getPlayer1();
             speed = player.getSpeed();
 
             if ((player.getX() - speed.getX()) > 0 ) {
-                this->onMap->collision (PLAYER1, (player.getX() - speed.getX()), player.getY() );
+                this->onMap->collision (PLAYER1, LEFT, (player.getX() - speed.getX()), player.getY() );
             }
-
-            //            if ((player.getX() - speed.getX()) > 0 ){
-            //                player.setX(player.getX() - speed.getX());
-            //            }
-            //            this->onMap->setPlayer1(player);
         }
 
         // Right
-        if(keyEvent->key() == Qt::Key_Right) {
+        if ( (keyEvent->key() == Qt::Key_Right) || pressedKeys.contains(Qt::Key_R) ){
             player = this->onMap->getPlayer1();
             speed = player.getSpeed();
 
             if ((player.getX() + speed.getX()) < BOUNDS) {
-                this->onMap->collision (PLAYER1, (player.getX() + speed.getX()), player.getY() );
+                this->onMap->collision (PLAYER1, RIGHT, (player.getX() + speed.getX()), player.getY() );
             }
-
-            //            if ((player.getX() + speed.getX()) < BOUNDS) {
-            //                player.setX(player.getX() + speed.getY());
-            //            }
-            //            this->onMap->setPlayer1(player);
         }
 
         update();
 
         return true;
+    } else if (event->type() == QEvent::KeyRelease) {
+        pressedKeys -= ((QKeyEvent*)event)->key();
+    } else {
+
     }
 
     return false;

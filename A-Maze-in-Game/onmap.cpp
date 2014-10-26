@@ -26,25 +26,32 @@ void OnMap::update ()
 
 }
 
-void OnMap::collision (int option, int desiredX, int desiredY)
+void OnMap::collision (int option, int direction, int desiredX, int desiredY)
 {
-    //    double x = (desiredX)/TILE_SIZE;
-    //    double auxX = x - (double) (desiredX)/TILE_SIZE;
+    int pos;
 
-    //    if (auxX >= 0.5) {
-    //        x+= 0.5;
-    //    }
+    switch (direction) {
+    case UP:
+        pos = this->getPositionMaze((desiredX)/TILE_SIZE, (desiredY)/TILE_SIZE);
+        break;
+    case DOWN:
+        pos = this->getPositionMaze((desiredX)/TILE_SIZE, (desiredY+TILE_SIZE - 1)/TILE_SIZE);
+        break;
 
-    //    double y = (desiredY)/TILE_SIZE;
-    //    double auxY = y - (double) (desiredY)/TILE_SIZE;
+    case LEFT:
+        pos = this->getPositionMaze((desiredX)/TILE_SIZE, (desiredY)/TILE_SIZE);
+        break;
 
-    //    if (auxY >= 0.5) {
-    //        y+= 0.5;
-    //    }
+    case RIGHT:
+        pos = this->getPositionMaze((desiredX+TILE_SIZE - 1)/TILE_SIZE, (desiredY)/TILE_SIZE);
+        break;
 
-    int pos = this->getPositionMaze((desiredX)/TILE_SIZE, (desiredY)/TILE_SIZE);
+    default:
+        qDebug ("Unkown Direction");
+        return;
+        break;
+    }
 
-    qDebug() << "pos : " << pos << "desired x : " << desiredX << "desiredY :" << desiredY;
     if (pos == INVALID) return;
 
     if (pos == WALL) return;
