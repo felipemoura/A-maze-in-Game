@@ -8,7 +8,7 @@
 
 using namespace std;
 
-class Player
+class Player : public Position
 {
 
 private:
@@ -50,7 +50,7 @@ public:
 
     // Methods
     Position desiredPosition ();
-    void applyBonut (int);
+    void applyBonus (int);
 };
 
 #endif // PLAYER_H

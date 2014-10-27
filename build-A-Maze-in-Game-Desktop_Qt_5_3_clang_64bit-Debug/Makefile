@@ -153,7 +153,6 @@ DIST          = ../../../Qt/5.3/clang_64/mkspecs/features/spec_pre.prf \
 		../../../Qt/5.3/clang_64/mkspecs/features/qt_config.prf \
 		../../../Qt/5.3/clang_64/mkspecs/macx-clang/qmake.conf \
 		../../../Qt/5.3/clang_64/mkspecs/features/spec_post.prf \
-		../A-Maze-in-Game/.qmake.stash \
 		../../../Qt/5.3/clang_64/mkspecs/features/exclusive_builds.prf \
 		../../../Qt/5.3/clang_64/mkspecs/features/default_pre.prf \
 		../../../Qt/5.3/clang_64/mkspecs/features/mac/default_pre.prf \
@@ -318,7 +317,6 @@ Makefile: ../A-Maze-in-Game/A-Maze-in-Game.pro ../../../Qt/5.3/clang_64/mkspecs/
 		../../../Qt/5.3/clang_64/mkspecs/features/qt_config.prf \
 		../../../Qt/5.3/clang_64/mkspecs/macx-clang/qmake.conf \
 		../../../Qt/5.3/clang_64/mkspecs/features/spec_post.prf \
-		.qmake.stash \
 		../../../Qt/5.3/clang_64/mkspecs/features/exclusive_builds.prf \
 		../../../Qt/5.3/clang_64/mkspecs/features/default_pre.prf \
 		../../../Qt/5.3/clang_64/mkspecs/features/mac/default_pre.prf \
@@ -439,7 +437,6 @@ Makefile: ../A-Maze-in-Game/A-Maze-in-Game.pro ../../../Qt/5.3/clang_64/mkspecs/
 ../../../Qt/5.3/clang_64/mkspecs/features/qt_config.prf:
 ../../../Qt/5.3/clang_64/mkspecs/macx-clang/qmake.conf:
 ../../../Qt/5.3/clang_64/mkspecs/features/spec_post.prf:
-.qmake.stash:
 ../../../Qt/5.3/clang_64/mkspecs/features/exclusive_builds.prf:
 ../../../Qt/5.3/clang_64/mkspecs/features/default_pre.prf:
 ../../../Qt/5.3/clang_64/mkspecs/features/mac/default_pre.prf:
@@ -513,6 +510,14 @@ compiler_moc_header_clean:
 	-$(DEL_FILE) moc_mainwindow.cpp
 moc_mainwindow.cpp: ../../../Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMainWindow \
 		../../../Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmainwindow.h \
+		../A-Maze-in-Game/onmap.h \
+		../A-Maze-in-Game/player.h \
+		../../../Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QBasicTimer \
+		../../../Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qbasictimer.h \
+		../../../Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QTimerEvent \
+		../../../Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qcoreevent.h \
+		../A-Maze-in-Game/position.h \
+		../A-Maze-in-Game/mazegeneration.h \
 		../A-Maze-in-Game/mainwindow.h
 	/Users/felipemoura/Qt/5.3/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -I/Users/felipemoura/Qt/5.3/clang_64/mkspecs/macx-clang -I/Users/felipemoura/GitHub/A-maze-in-Game/A-Maze-in-Game -I/Users/felipemoura/Qt/5.3/clang_64/lib/QtWidgets.framework/Headers -I/Users/felipemoura/Qt/5.3/clang_64/lib/QtGui.framework/Headers -I/Users/felipemoura/Qt/5.3/clang_64/lib/QtCore.framework/Headers -I. -F/Users/felipemoura/Qt/5.3/clang_64/lib ../A-Maze-in-Game/mainwindow.h -o moc_mainwindow.cpp
 
@@ -539,10 +544,6 @@ compiler_clean: compiler_moc_header_clean compiler_uic_clean
 main.o: ../A-Maze-in-Game/main.cpp ../A-Maze-in-Game/mainwindow.h \
 		../../../Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMainWindow \
 		../../../Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmainwindow.h \
-		../../../Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QApplication \
-		../../../Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qapplication.h \
-		../../../Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QDebug \
-		../../../Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qdebug.h \
 		../A-Maze-in-Game/onmap.h \
 		../A-Maze-in-Game/player.h \
 		../../../Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QBasicTimer \
@@ -550,13 +551,119 @@ main.o: ../A-Maze-in-Game/main.cpp ../A-Maze-in-Game/mainwindow.h \
 		../../../Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QTimerEvent \
 		../../../Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qcoreevent.h \
 		../A-Maze-in-Game/position.h \
-		../A-Maze-in-Game/mazegeneration.h
+		../A-Maze-in-Game/mazegeneration.h \
+		../../../Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QApplication \
+		../../../Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qapplication.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../A-Maze-in-Game/main.cpp
 
 mainwindow.o: ../A-Maze-in-Game/mainwindow.cpp ../A-Maze-in-Game/mainwindow.h \
 		../../../Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMainWindow \
 		../../../Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmainwindow.h \
-		ui_mainwindow.h
+		../A-Maze-in-Game/onmap.h \
+		../A-Maze-in-Game/player.h \
+		../../../Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QBasicTimer \
+		../../../Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qbasictimer.h \
+		../../../Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QTimerEvent \
+		../../../Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qcoreevent.h \
+		../A-Maze-in-Game/position.h \
+		../A-Maze-in-Game/mazegeneration.h \
+		ui_mainwindow.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/QtGui \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qaccessible.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qaccessiblebridge.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qaccessibleobject.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qaccessibleplugin.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qbitmap.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qicon.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qiconengine.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qiconengineplugin.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qimage.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qimageiohandler.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qimagereader.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qimagewriter.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qmovie.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qpicture.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qpictureformatplugin.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qpixmap.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qpixmapcache.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qstandarditemmodel.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qclipboard.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qcursor.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qdrag.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qevent.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qgenericplugin.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qgenericpluginfactory.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qguiapplication.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qinputmethod.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qkeysequence.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qoffscreensurface.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qopenglcontext.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qpalette.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qscreen.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qsessionmanager.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qstylehints.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qsurface.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qsurfaceformat.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qtouchdevice.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qwindow.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qwindowdefs.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qgenericmatrix.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qmatrix4x4.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qquaternion.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qvector2d.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qvector3d.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qvector4d.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qopengl.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qopenglbuffer.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qopengldebug.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qopenglframebufferobject.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qopenglfunctions.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qopenglpaintdevice.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qopenglpixeltransferoptions.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qopenglshaderprogram.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qopengltexture.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qopengltimerquery.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qopenglversionfunctions.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qopenglvertexarrayobject.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qbackingstore.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qbrush.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qcolor.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qmatrix.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qpagedpaintdevice.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qpagelayout.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qpagesize.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qpaintdevice.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qpaintengine.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qpainter.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qpainterpath.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qpdfwriter.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qpen.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qpolygon.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qregion.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qrgb.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qtransform.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qabstracttextdocumentlayout.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qfont.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qfontdatabase.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qfontinfo.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qfontmetrics.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qglyphrun.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qrawfont.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qstatictext.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qsyntaxhighlighter.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qtextcursor.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qtextdocument.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qtextdocumentfragment.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qtextdocumentwriter.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qtextformat.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qtextlayout.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qtextlist.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qtextobject.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qtextoption.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qtexttable.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qdesktopservices.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qvalidator.h \
+		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qtguiversion.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../A-Maze-in-Game/mainwindow.cpp
 
 position.o: ../A-Maze-in-Game/position.cpp ../A-Maze-in-Game/position.h

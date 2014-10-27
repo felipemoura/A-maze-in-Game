@@ -5,6 +5,7 @@
 
 MazeGeneration::MazeGeneration()
 {
+    // Starting  Random Function
     srand(time(NULL));
 
     setSize (MAZE_SIZE);
@@ -36,7 +37,7 @@ int** MazeGeneration::mazeGeneration ()
         maze[i] = new int [getSize()];
     }
 
-    qDebug( "Start to generate a maze" );
+    //qDebug( "Start to generate a maze" );
 
     for (i = 0; i < getSize(); i++) {
         for(j = 0; j < getSize(); j++) {
@@ -45,7 +46,7 @@ int** MazeGeneration::mazeGeneration ()
     }
 
     // Generates the maze recursively
-    workOnCell( getSize()/2, getSize()/2 );
+    workOnCell( 1,1 );
 
     return getMaze();
 }
@@ -65,7 +66,7 @@ void MazeGeneration::workOnCell (int xCell,int yCell)
         order[i] = i;
     }
 
-    for (i = 0; i < 100 ; i++) {
+    for (i = 0; i < NUMBER_OF_GENERATIONS ; i++) {
         a=rand() % 4;
         b=rand() % 4;
 
@@ -110,6 +111,15 @@ void MazeGeneration::workOnCell (int xCell,int yCell)
             }
         }
 
+    }
+}
+
+int MazeGeneration::getPositionMaze(int posX, int posY)
+{
+    if ( (posX >= ZERO) && (posY >= ZERO) && (posX < MAZE_SIZE) && (posY < MAZE_SIZE) ){
+        return this->maze[posX][posY];
+    } else {
+        return INVALID;
     }
 }
 

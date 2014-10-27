@@ -1,14 +1,17 @@
 #include "onmap.h"
+#include "mainwindow.h"
+#include <QDebug>
 
 // Constructor
 OnMap::OnMap()
 {
+    //Player ();
+    
     MazeGeneration* desiredMaze = new MazeGeneration ();
     setMaze( desiredMaze->getMaze() );
 
     setWidthGame(desiredMaze->getSize());
     setHeightGame(desiredMaze->getSize());
-
 }
 
 // Destructor
@@ -23,9 +26,44 @@ void OnMap::update ()
 
 }
 
-void OnMap::collision ()
+void OnMap::collision (int option, int direction, int desiredX, int desiredY)
 {
+    int pos;
 
+    switch (direction) {
+    case UP:
+        pos = this->getPositionMaze((desiredX)/TILE_SIZE, (desiredY)/TILE_SIZE);
+        break;
+    case DOWN:
+        pos = this->getPositionMaze((desiredX)/TILE_SIZE, (desiredY+TILE_SIZE - 1)/TILE_SIZE);
+        break;
+
+    case LEFT:
+        pos = this->getPositionMaze((desiredX)/TILE_SIZE, (desiredY)/TILE_SIZE);
+        break;
+
+    case RIGHT:
+        pos = this->getPositionMaze((desiredX+TILE_SIZE - 1)/TILE_SIZE, (desiredY)/TILE_SIZE);
+        break;
+
+    default:
+        qDebug ("Unkown Direction");
+        return;
+        break;
+    }
+
+    if (pos == INVALID) return;
+
+    if (pos == WALL) return;
+
+    if (option == PLAYER1) {
+        player1.setX(desiredX);
+        player1.setY(desiredY);
+
+    } else {
+        player2.setX(desiredX);
+        player2.setY(desiredY);
+    }
 }
 
 // Getters

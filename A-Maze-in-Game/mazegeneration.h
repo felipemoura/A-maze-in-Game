@@ -2,6 +2,12 @@
 #define MAZEGENERATION_H
 
 #define MAZE_SIZE 30
+#define NUMBER_OF_GENERATIONS 100
+#define ZERO 0
+#define INVALID -1
+
+#define WALL 1
+#define PATH 0
 
 class MazeGeneration
 {
@@ -20,6 +26,7 @@ public:
     // Methods
     int **mazeGeneration();
     void workOnCell(int, int);
+    int getPositionMaze(int,int);
 
     // Getters
     int **getMaze() const;
