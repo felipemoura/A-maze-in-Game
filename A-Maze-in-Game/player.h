@@ -4,6 +4,7 @@
 #include <QBasicTimer>
 #include <QTimerEvent>
 #include <string>
+#include <QTime>
 #include "position.h"
 
 using namespace std;
@@ -16,10 +17,9 @@ private:
     Position speed;
 
     string username;
-
-    QBasicTimer timerSlow;
-    QBasicTimer timerFast;
-
+    int numberOfBonus;
+    int typeBonus;
+    QTime bonus;
     void timerEvent (QTimerEvent);
 
 public:
@@ -47,7 +47,9 @@ public:
 
     void setTimerSlow(const QBasicTimer &value);
     void setTimerFast(const QBasicTimer &value);
-
+    int bonusNow();
+    void addBonus(int );
+    void testEndBonus();
     // Methods
     Position desiredPosition ();
     void applyBonus (int);

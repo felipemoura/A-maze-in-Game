@@ -37,6 +37,11 @@ void OnMap::collision (int option, int direction, int desiredX, int desiredY)
     int xMiddle, yMiddle;
 
 
+//First we look if the bonus end:
+player1.testEndBonus();
+player2.testEndBonus();
+
+//Second we look at the collisions
     switch (direction) {
     case UP:
         xSquare=(desiredX)/TILE_SIZE;
@@ -97,35 +102,47 @@ void OnMap::collision (int option, int direction, int desiredX, int desiredY)
     //We test the bonus after the wall to avoid the possibility of touching a bonus where it is not possible to commit.
     if (pos == SBONUS)//SlowBonus
     {
-        //We put 0 where the bonus is.
-        this->currentMaze->setPositionMaze(xSquare,ySquare,0);
+
+
 
         //We divide by 2 the quickness of the player
-         if (option == PLAYER1) {
-
-            Position newSpeed= Position(player1.getSpeed().getX()/2,player1.getSpeed().getY()/2);
+         if ((option == PLAYER1)&&(player1.bonusNow()==0)) {
+            //We put 0 where the bonus is.
+            this->currentMaze->setPositionMaze(xSquare,ySquare,0);
+            //Position newSpeed= Position(player1.getSpeed().getX()/2,player1.getSpeed().getY()/2);
+            Position newSpeed= Position(1,1);
             player1.setSpeed(newSpeed);
-        } else {
-            Position newSpeed= Position(player2.getSpeed().getX()/2,player2.getSpeed().getY()/2);
+            player1.addBonus(pos);
+         }
+        if ((option == PLAYER2)&&(player2.bonusNow()==0)) {
+        //We put 0 where the bonus is.
+            this->currentMaze->setPositionMaze(xSquare,ySquare,0);
+            //Position newSpeed= Position(player2.getSpeed().getX()/2,player2.getSpeed().getY()/2);
+            Position newSpeed= Position(1,1);
             player2.setSpeed(newSpeed);
+            player2.addBonus(pos);
         }
 
     }
     if (pos == FBONUS)//FastBonus
     {
-        //We put 0 where the bonus is.
-        this->currentMaze->setPositionMaze(xSquare,ySquare,0);
-
-        //We multiply by 2 the quickness of the player
-         if (option == PLAYER1) {
-
-            Position newSpeed= Position(player1.getSpeed().getX()*2,player1.getSpeed().getY()*2);
+        //We divide by 2 the quickness of the player
+         if ((option == PLAYER1)&&(player1.bonusNow()==0)) {
+            //We put 0 where the bonus is.
+            this->currentMaze->setPositionMaze(xSquare,ySquare,0);
+            //Position newSpeed= Position(player1.getSpeed().getX()*2,player1.getSpeed().getY()*2);
+            Position newSpeed= Position(7,7);
             player1.setSpeed(newSpeed);
-        } else {
-            Position newSpeed= Position(player2.getSpeed().getX()*2,player2.getSpeed().getY()*2);
-            player2.setSpeed(newSpeed);
+            player1.addBonus(pos);
         }
-
+        if ((option == PLAYER2)&&(player2.bonusNow()==0)) {
+            //We put 0 where the bonus is.
+            this->currentMaze->setPositionMaze(xSquare,ySquare,0);
+            //Position newSpeed= Position(player2.getSpeed().getX()*2,player2.getSpeed().getY()*2);
+            Position newSpeed= Position(7,7);
+            player2.setSpeed(newSpeed);
+            player2.addBonus(pos);
+        }
     }
 
 
