@@ -6,7 +6,7 @@
 OnMap::OnMap()
 {
     //Player ();
-    
+
     MazeGeneration* desiredMaze = new MazeGeneration ();
     setMaze( desiredMaze->getMaze() );
 
@@ -17,7 +17,7 @@ OnMap::OnMap()
 // Destructor
 OnMap::~OnMap()
 {
-    
+
 }
 
 // Methods
@@ -29,22 +29,27 @@ void OnMap::update ()
 void OnMap::collision (int option, int direction, int desiredX, int desiredY)
 {
     int pos;
+    int pos2;
 
     switch (direction) {
     case UP:
         pos = this->getPositionMaze((desiredX)/TILE_SIZE, (desiredY)/TILE_SIZE);
+        pos2 = this->getPositionMaze((desiredX+TILE_SIZE - 1)/TILE_SIZE, (desiredY)/TILE_SIZE);
         break;
 
     case DOWN:
         pos = this->getPositionMaze((desiredX)/TILE_SIZE, (desiredY + TILE_SIZE - 1)/TILE_SIZE);
+        pos2 = this->getPositionMaze((desiredX+TILE_SIZE - 1)/TILE_SIZE, (desiredY + TILE_SIZE - 1)/TILE_SIZE);
         break;
 
     case LEFT:
         pos = this->getPositionMaze((desiredX)/TILE_SIZE, (desiredY)/TILE_SIZE);
+        pos2 = this->getPositionMaze((desiredX)/TILE_SIZE, (desiredY+TILE_SIZE - 1)/TILE_SIZE);
         break;
 
     case RIGHT:
         pos = this->getPositionMaze((desiredX + TILE_SIZE - 1)/TILE_SIZE, (desiredY)/TILE_SIZE);
+        pos2 = this->getPositionMaze((desiredX + TILE_SIZE - 1)/TILE_SIZE, (desiredY+TILE_SIZE - 1)/TILE_SIZE);
         break;
 
     default:
@@ -56,6 +61,7 @@ void OnMap::collision (int option, int direction, int desiredX, int desiredY)
     if (pos == INVALID) return;
 
     if (pos == WALL) return;
+    if (pos2== WALL) return;
 
 
     if (option == PLAYER1) {

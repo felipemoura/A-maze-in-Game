@@ -32,10 +32,22 @@ void MainWindow::paintEvent(QPaintEvent *event)
 
     for (i = 0; i < MAZE_SIZE ; i++) {
         for (j = 0; j < MAZE_SIZE; j++) {
-            if (aux[i][j] == 1) {
+            switch (aux[i][j])
+            {
+            case 1: //Wall
                 p.fillRect ( TILE_SIZE*i, TILE_SIZE*j, TILE_SIZE,TILE_SIZE, QColor(0,0,0,255));
-            } else {
+                break;
+            case 0://Nothing
                 p.fillRect (TILE_SIZE*i, TILE_SIZE*j, TILE_SIZE, TILE_SIZE, QColor(255,255,255,255));
+                break;
+            case 2://Bonus Slow
+                p.fillRect (TILE_SIZE*i, TILE_SIZE*j, TILE_SIZE, TILE_SIZE, QColor(128,0,128,255));
+                break;
+            case 3://Bonus Fast
+                p.fillRect (TILE_SIZE*i, TILE_SIZE*j, TILE_SIZE, TILE_SIZE, QColor(0,255,0,255));
+                break;
+            default:
+                qDebug("This should not be in the maze");
             }
         }
     }

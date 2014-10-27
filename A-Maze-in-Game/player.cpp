@@ -3,8 +3,8 @@
 // Constructors
 Player::Player()
 {
-    this->speed.setX(2);
-    this->speed.setY(2);
+    this->speed.setX(4);
+    this->speed.setY(4);
 }
 
 Player::Player (Position desiredPosition, Position desiredSpeed, string desiredUsername)
@@ -25,7 +25,8 @@ Player::~Player()
 // Methods
 Position Player::desiredPosition ()
 {
-
+Position a;
+return(a);
 }
 
 void Player::applyBonus (int)

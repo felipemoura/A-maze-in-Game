@@ -30,7 +30,7 @@ MazeGeneration::~MazeGeneration()
 
 int** MazeGeneration::mazeGeneration ()
 {
-    int i, j;
+    int i, j,a,b;
 
     maze = new int* [getSize()];
 
@@ -48,7 +48,25 @@ int** MazeGeneration::mazeGeneration ()
 
     // Generates the maze recursively
     workOnCell( 1,1 );
+    //Adds 5 bonuses:
+    int nb_bonus=0;
+    while (nb_bonus<5)
+    {
+        a=rand() % getSize();
+        b=rand() % getSize();
+        if ((a==1)&&(b==1))
+        {
+            a=5;
+            b=5;
+        }
+        if (maze[a][b] == 0)
+        {
+            maze[a][b]=2+rand()%2;
+            nb_bonus+=1;
+        }
 
+
+    }
     return getMaze();
 }
 
