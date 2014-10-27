@@ -50,13 +50,6 @@ string Player::getUsername() const {
     return username;
 }
 
-QBasicTimer Player::getTimerSlow() const {
-    return timerSlow;
-}
-
-QBasicTimer Player::getTimerFast() const {
-    return timerFast;
-}
 
 
 // Setters

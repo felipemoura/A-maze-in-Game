@@ -36,15 +36,15 @@ public:
 
     string getUsername() const;
 
-    QBasicTimer getTimerSlow() const;
-    QBasicTimer getTimerFast() const;
+    QBasicTimer EndSlow;
+    QBasicTimer EndFast;
 
     // Setters
     void setSpeed(const Position &value);
     void setPosition(const Position &value);
 
     void setUsername(const string &value);
-    
+
     void setTimerSlow(const QBasicTimer &value);
     void setTimerFast(const QBasicTimer &value);
 
