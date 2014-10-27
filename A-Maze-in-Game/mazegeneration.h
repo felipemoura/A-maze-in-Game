@@ -6,6 +6,8 @@
 #define ZERO 0
 #define INVALID -1
 
+#define SBONUS 3
+#define FBONUS 2
 #define WALL 1
 #define PATH 0
 
@@ -27,7 +29,7 @@ public:
     int **mazeGeneration();
     void workOnCell(int, int);
     int getPositionMaze(int,int);
-
+    void setPositionMaze(int,int,int);
     // Getters
     int **getMaze() const;
     int getSize() const;

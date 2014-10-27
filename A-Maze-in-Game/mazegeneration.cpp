@@ -52,8 +52,10 @@ int** MazeGeneration::mazeGeneration ()
     int nb_bonus=0;
     while (nb_bonus<5)
     {
-        a=rand() % getSize();
-        b=rand() % getSize();
+        //a=rand() % getSize();
+        //b=rand() % getSize();
+        a=rand() % 8;
+        b=rand() % 8;
         if ((a==1)&&(b==1))
         {
             a=5;
@@ -139,6 +141,15 @@ int MazeGeneration::getPositionMaze(int posX, int posY)
         return this->maze[posX][posY];
     } else {
         return INVALID;
+    }
+}
+
+void MazeGeneration::setPositionMaze(int posX, int posY, int value)
+{
+    if ( (posX >= ZERO) && (posY >= ZERO) && (posX < MAZE_SIZE) && (posY < MAZE_SIZE) ){
+        maze[posX][posY]=value;
+    } else {
+        qDebug("Cell out of bound");
     }
 }
 

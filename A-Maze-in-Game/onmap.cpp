@@ -30,26 +30,37 @@ void OnMap::collision (int option, int direction, int desiredX, int desiredY)
 {
     int pos;
     int pos2;
+    int xSquare,ySquare;
+    int xSquare2,ySquare2;
+
 
     switch (direction) {
     case UP:
-        pos = this->getPositionMaze((desiredX)/TILE_SIZE, (desiredY)/TILE_SIZE);
-        pos2 = this->getPositionMaze((desiredX+TILE_SIZE - 1)/TILE_SIZE, (desiredY)/TILE_SIZE);
+        xSquare=(desiredX)/TILE_SIZE;
+        ySquare=(desiredY)/TILE_SIZE;
+        xSquare2=(desiredX+TILE_SIZE - 1)/TILE_SIZE;
+        ySquare2= (desiredY)/TILE_SIZE;
         break;
 
     case DOWN:
-        pos = this->getPositionMaze((desiredX)/TILE_SIZE, (desiredY + TILE_SIZE - 1)/TILE_SIZE);
-        pos2 = this->getPositionMaze((desiredX+TILE_SIZE - 1)/TILE_SIZE, (desiredY + TILE_SIZE - 1)/TILE_SIZE);
+        xSquare=(desiredX)/TILE_SIZE;
+        ySquare=(desiredY + TILE_SIZE - 1)/TILE_SIZE;
+        xSquare2=(desiredX+TILE_SIZE - 1)/TILE_SIZE;
+        ySquare2=(desiredY + TILE_SIZE - 1)/TILE_SIZE;
         break;
 
     case LEFT:
-        pos = this->getPositionMaze((desiredX)/TILE_SIZE, (desiredY)/TILE_SIZE);
-        pos2 = this->getPositionMaze((desiredX)/TILE_SIZE, (desiredY+TILE_SIZE - 1)/TILE_SIZE);
+        xSquare=(desiredX)/TILE_SIZE;
+        ySquare=(desiredY)/TILE_SIZE;
+        xSquare2=(desiredX)/TILE_SIZE;
+        ySquare2=(desiredY+TILE_SIZE - 1)/TILE_SIZE;
         break;
 
     case RIGHT:
-        pos = this->getPositionMaze((desiredX + TILE_SIZE - 1)/TILE_SIZE, (desiredY)/TILE_SIZE);
-        pos2 = this->getPositionMaze((desiredX + TILE_SIZE - 1)/TILE_SIZE, (desiredY+TILE_SIZE - 1)/TILE_SIZE);
+        xSquare=(desiredX + TILE_SIZE - 1)/TILE_SIZE;
+        ySquare=(desiredY)/TILE_SIZE;
+        xSquare2=(desiredX + TILE_SIZE - 1)/TILE_SIZE;
+        ySquare2=(desiredY + TILE_SIZE - 1)/TILE_SIZE;
         break;
 
     default:
@@ -58,13 +69,51 @@ void OnMap::collision (int option, int direction, int desiredX, int desiredY)
         break;
     }
 
+      pos = this->getPositionMaze(xSquare, ySquare);
+      pos2 = this->getPositionMaze(xSquare2, ySquare2);
+
     if (pos == INVALID) return;
 
     if (pos == WALL) return;
     if (pos2== WALL) return;
 
+    //We test the bonus after the wall to avoid the possibility of touching a bonus where it is not possible to commit.
+    if (pos == SBONUS)
+    {
+        //We put 0 where the bonus is
+        maze[xSquare][ySquare]=0;
+        //We divide by 2 the quickness of the player
+         if (option == PLAYER1) {
+         qDebug("%d",player1.getSpeed().getX());
+            Position newSpeed= Position(player1.getSpeed().getX()/2,player1.getSpeed().getY()/2);
+            player1.setSpeed(newSpeed);
+            qDebug("%d",player1.getSpeed().getX());
+        } else {
+            Position newSpeed= Position(player2.getSpeed().getX()/2,player2.getSpeed().getY()/2);
+            player2.setSpeed(newSpeed);
+        }
+
+    }
+     if (pos == FBONUS)
+    {
+        //We put 0 where the bonus is
+        maze[xSquare][ySquare]=0;
+        //We multiply by two the quickness of the player
+         if (option == PLAYER1) {
+            qDebug("%d",player1.getSpeed().getX());
+            Position newSpeed= Position(2*player1.getSpeed().getX(),2*player1.getSpeed().getY());
+            player1.setSpeed(newSpeed);
+            qDebug("%d",player1.getSpeed().getX());
+
+        } else {
+            Position newSpeed= Position(player2.getSpeed().getX()*2,2*player2.getSpeed().getY());
+            player2.setSpeed(newSpeed);
+        }
+
+    }
 
     if (option == PLAYER1) {
+
         player1.setX(desiredX);
         player1.setY(desiredY);
 
