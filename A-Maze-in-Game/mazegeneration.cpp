@@ -2,6 +2,7 @@
 #include <QDebug>
 #include <QString>
 #include <string>
+#include <time.h>
 
 MazeGeneration::MazeGeneration()
 {

@@ -22,7 +22,9 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::paintEvent(QPaintEvent *event)
-{    
+{
+    static int flag = 0;
+
     QPainter p(this);
 
     int i,j;
@@ -39,10 +41,10 @@ void MainWindow::paintEvent(QPaintEvent *event)
     }
 
     Player player = this->onMap->getPlayer1();
-    p.fillRect (player.getX(), player.getY(), TILE_SIZE, TILE_SIZE, QColor(128,128,128,255));
+    p.fillRect (player.getX(), player.getY(), TILE_SIZE, TILE_SIZE, QColor(255,0,0,255));
 
     player = this->onMap->getPlayer2();
-    p.fillRect (player.getX(), player.getY(), TILE_SIZE, TILE_SIZE, QColor(128,128,128,255));
+    p.fillRect (player.getX(), player.getY(), TILE_SIZE, TILE_SIZE, QColor(0,0,255,255));
 }
 
 // Filter of KeyEvent
@@ -129,7 +131,7 @@ bool MainWindow::eventFilter(QObject *object, QEvent *event)
         }
 
         // Right
-        if ( (keyEvent->key() == Qt::Key_Right) || pressedKeys.contains(Qt::Key_R) ){
+        if ( (keyEvent->key() == Qt::Key_Right) || pressedKeys.contains(Qt::Key_Right) ){
             player = this->onMap->getPlayer1();
             speed = player.getSpeed();
 
@@ -141,11 +143,16 @@ bool MainWindow::eventFilter(QObject *object, QEvent *event)
         update();
 
         return true;
+
     } else if (event->type() == QEvent::KeyRelease) {
         pressedKeys -= ((QKeyEvent*)event)->key();
+        update();
+
+        return true;
+
     } else {
+        update();
+        return false;
 
     }
-
-    return false;
 }

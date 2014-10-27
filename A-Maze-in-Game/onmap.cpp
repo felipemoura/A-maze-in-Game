@@ -34,8 +34,9 @@ void OnMap::collision (int option, int direction, int desiredX, int desiredY)
     case UP:
         pos = this->getPositionMaze((desiredX)/TILE_SIZE, (desiredY)/TILE_SIZE);
         break;
+
     case DOWN:
-        pos = this->getPositionMaze((desiredX)/TILE_SIZE, (desiredY+TILE_SIZE - 1)/TILE_SIZE);
+        pos = this->getPositionMaze((desiredX)/TILE_SIZE, (desiredY + TILE_SIZE - 1)/TILE_SIZE);
         break;
 
     case LEFT:
@@ -43,7 +44,7 @@ void OnMap::collision (int option, int direction, int desiredX, int desiredY)
         break;
 
     case RIGHT:
-        pos = this->getPositionMaze((desiredX+TILE_SIZE - 1)/TILE_SIZE, (desiredY)/TILE_SIZE);
+        pos = this->getPositionMaze((desiredX + TILE_SIZE - 1)/TILE_SIZE, (desiredY)/TILE_SIZE);
         break;
 
     default:
@@ -55,6 +56,7 @@ void OnMap::collision (int option, int direction, int desiredX, int desiredY)
     if (pos == INVALID) return;
 
     if (pos == WALL) return;
+
 
     if (option == PLAYER1) {
         player1.setX(desiredX);
