@@ -14,19 +14,17 @@ Player::Player (Position desiredPosition, Position desiredSpeed, string desiredU
     setUsername(desiredUsername);
 }
 
-
 // Destructors
 Player::~Player()
 {
 
 }
 
-
 // Methods
 Position Player::desiredPosition ()
 {
-Position a;
-return(a);
+    Position a;
+    return(a);
 }
 
 void Player::applyBonus (int)

@@ -7,11 +7,13 @@ OnMap::OnMap()
 {
     //Player ();
 
-    MazeGeneration* desiredMaze = new MazeGeneration ();
+    currentMaze= new MazeGeneration ();
+    /*
     setMaze( desiredMaze->getMaze() );
 
     setWidthGame(desiredMaze->getSize());
     setHeightGame(desiredMaze->getSize());
+    */
 }
 
 // Destructor
@@ -32,6 +34,7 @@ void OnMap::collision (int option, int direction, int desiredX, int desiredY)
     int pos2;
     int xSquare,ySquare;
     int xSquare2,ySquare2;
+    int xMiddle, yMiddle;
 
 
     switch (direction) {
@@ -69,48 +72,63 @@ void OnMap::collision (int option, int direction, int desiredX, int desiredY)
         break;
     }
 
-      pos = this->getPositionMaze(xSquare, ySquare);
-      pos2 = this->getPositionMaze(xSquare2, ySquare2);
+      pos = this->currentMaze->getPositionMaze(xSquare, ySquare);
+      pos2 = this->currentMaze->getPositionMaze(xSquare2, ySquare2);
 
     if (pos == INVALID) return;
 
-    if (pos == WALL) return;
-    if (pos2== WALL) return;
+    if ((pos == WALL)||(pos2==WALL))
+    {
+        //We put the player just near the wall
+        xMiddle=(desiredX + 0.5* TILE_SIZE )/TILE_SIZE;
+        yMiddle=(desiredY + 0.5 * TILE_SIZE )/TILE_SIZE;
+        if (option == PLAYER1) {
+
+            player1.setX(xMiddle*TILE_SIZE);
+            player1.setY(yMiddle*TILE_SIZE);
+
+        } else {
+           player2.setX(xMiddle*TILE_SIZE);
+           player2.setY(yMiddle*TILE_SIZE);
+        }
+    return;
+    }
 
     //We test the bonus after the wall to avoid the possibility of touching a bonus where it is not possible to commit.
-    if (pos == SBONUS)
+    if (pos == SBONUS)//SlowBonus
     {
-        //We put 0 where the bonus is
-        maze[xSquare][ySquare]=0;
+        //We put 0 where the bonus is.
+        this->currentMaze->setPositionMaze(xSquare,ySquare,0);
+
         //We divide by 2 the quickness of the player
          if (option == PLAYER1) {
-         qDebug("%d",player1.getSpeed().getX());
+
             Position newSpeed= Position(player1.getSpeed().getX()/2,player1.getSpeed().getY()/2);
             player1.setSpeed(newSpeed);
-            qDebug("%d",player1.getSpeed().getX());
         } else {
             Position newSpeed= Position(player2.getSpeed().getX()/2,player2.getSpeed().getY()/2);
             player2.setSpeed(newSpeed);
         }
 
     }
-     if (pos == FBONUS)
+    if (pos == FBONUS)//FastBonus
     {
-        //We put 0 where the bonus is
-        maze[xSquare][ySquare]=0;
-        //We multiply by two the quickness of the player
-         if (option == PLAYER1) {
-            qDebug("%d",player1.getSpeed().getX());
-            Position newSpeed= Position(2*player1.getSpeed().getX(),2*player1.getSpeed().getY());
-            player1.setSpeed(newSpeed);
-            qDebug("%d",player1.getSpeed().getX());
+        //We put 0 where the bonus is.
+        this->currentMaze->setPositionMaze(xSquare,ySquare,0);
 
+        //We multiply by 2 the quickness of the player
+         if (option == PLAYER1) {
+
+            Position newSpeed= Position(player1.getSpeed().getX()*2,player1.getSpeed().getY()*2);
+            player1.setSpeed(newSpeed);
         } else {
-            Position newSpeed= Position(player2.getSpeed().getX()*2,2*player2.getSpeed().getY());
+            Position newSpeed= Position(player2.getSpeed().getX()*2,player2.getSpeed().getY()*2);
             player2.setSpeed(newSpeed);
         }
 
     }
+
+
 
     if (option == PLAYER1) {
 
@@ -150,7 +168,7 @@ int OnMap::getSizeMaze() const {
 }
 
 int **OnMap::getMaze() const {
-    return maze;
+    return this->currentMaze->getMaze();
 }
 
 //QFrame OnMap::getWidget() const {
@@ -185,7 +203,7 @@ void OnMap::setSizeMaze(int value) {
 }
 
 void OnMap::setMaze(int **value){
-    maze = value;
+    //maze = value;
 }
 
 

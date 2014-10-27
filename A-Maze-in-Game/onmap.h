@@ -66,8 +66,8 @@ private:
     int sizeSquare;
     int sizeMaze;
 
-    int **maze;
-
+    //int **maze;
+    MazeGeneration* currentMaze;
     void update ();
 
 };
