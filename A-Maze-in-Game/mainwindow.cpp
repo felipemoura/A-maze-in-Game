@@ -28,6 +28,7 @@ void MainWindow::paintEvent(QPaintEvent *event)
 {
     QPainter p(this);
     int i,j;
+<<<<<<< HEAD
     int **aux = NULL;
     static int winnerX = 27;
     static int winnerY = 27;
@@ -55,6 +56,28 @@ void MainWindow::paintEvent(QPaintEvent *event)
                 default:
                     qDebug("This should not be in the maze");
                 }
+=======
+    int **aux = onMap->getMaze ();
+
+    for (i = 0; i < MAZE_SIZE ; i++) {
+        for (j = 0; j < MAZE_SIZE; j++) {
+            switch (aux[i][j])
+            {
+            case 1: //Wall
+                p.fillRect ( TILE_SIZE*i, TILE_SIZE*j, TILE_SIZE,TILE_SIZE, QColor(0,0,0,255));
+                break;
+            case 0://Nothing
+                p.fillRect (TILE_SIZE*i, TILE_SIZE*j, TILE_SIZE, TILE_SIZE, QColor(255,255,255,255));
+                break;
+            case 2://Bonus Slow
+                p.fillRect (TILE_SIZE*i, TILE_SIZE*j, TILE_SIZE, TILE_SIZE, QColor(128,0,128,255));
+                break;
+            case 3://Bonus Fast
+                p.fillRect (TILE_SIZE*i, TILE_SIZE*j, TILE_SIZE, TILE_SIZE, QColor(0,255,0,255));
+                break;
+            default:
+                qDebug("This should not be in the maze");
+>>>>>>> FETCH_HEAD
             }
         }
 
