@@ -4,6 +4,7 @@
 #include <QBasicTimer>
 #include <QTimerEvent>
 #include <string>
+#include <QTime>
 #include "position.h"
 
 using namespace std;
@@ -16,10 +17,9 @@ private:
     Position speed;
 
     string username;
-
-    QBasicTimer timerSlow;
-    QBasicTimer timerFast;
-
+    int numberOfBonus;
+    int typeBonus;
+    QTime bonus;
     void timerEvent (QTimerEvent);
 
 public:
@@ -30,27 +30,33 @@ public:
     // Destructors
     ~Player();
 
+    // Methods
+    Position desiredPosition ();
+    void applyBonus (int);
+    int bonusNow();
+    void addBonus(int );
+    void testEndBonus();
+
+    // Timers
+    QBasicTimer EndSlow;
+    QBasicTimer EndFast;
+
     // Getters
     Position getPosition() const;
     Position getSpeed() const;
 
     string getUsername() const;
 
-    QBasicTimer getTimerSlow() const;
-    QBasicTimer getTimerFast() const;
-
     // Setters
     void setSpeed(const Position &value);
     void setPosition(const Position &value);
 
     void setUsername(const string &value);
-    
+
     void setTimerSlow(const QBasicTimer &value);
     void setTimerFast(const QBasicTimer &value);
-
-    // Methods
-    Position desiredPosition ();
-    void applyBonus (int);
+    
+    
 };
 
 #endif // PLAYER_H

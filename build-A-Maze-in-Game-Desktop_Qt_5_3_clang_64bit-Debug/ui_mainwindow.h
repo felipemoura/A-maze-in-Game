@@ -15,8 +15,7 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QStatusBar>
-#include <QtWidgets/QToolBar>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -24,28 +23,23 @@ QT_BEGIN_NAMESPACE
 class Ui_MainWindow
 {
 public:
+    QAction *actionExit;
     QWidget *centralWidget;
-    QStatusBar *statusBar;
-    QToolBar *mainToolBar;
+    QPushButton *pushButton;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->setEnabled(false);
-        MainWindow->resize(1160, 1160);
-        MainWindow->setMinimumSize(QSize(0, 0));
-        MainWindow->setMaximumSize(QSize(1160, 1160));
-        MainWindow->setMouseTracking(false);
+        MainWindow->resize(654, 399);
+        actionExit = new QAction(MainWindow);
+        actionExit->setObjectName(QStringLiteral("actionExit"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
+        pushButton = new QPushButton(centralWidget);
+        pushButton->setObjectName(QStringLiteral("pushButton"));
+        pushButton->setGeometry(QRect(510, 30, 115, 32));
         MainWindow->setCentralWidget(centralWidget);
-        statusBar = new QStatusBar(MainWindow);
-        statusBar->setObjectName(QStringLiteral("statusBar"));
-        MainWindow->setStatusBar(statusBar);
-        mainToolBar = new QToolBar(MainWindow);
-        mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
-        MainWindow->addToolBar(Qt::TopToolBarArea, mainToolBar);
 
         retranslateUi(MainWindow);
 
@@ -55,6 +49,8 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0));
+        actionExit->setText(QApplication::translate("MainWindow", "Exit", 0));
+        pushButton->setText(QApplication::translate("MainWindow", "Reset", 0));
     } // retranslateUi
 
 };

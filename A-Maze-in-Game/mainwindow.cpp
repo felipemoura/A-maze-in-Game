@@ -7,13 +7,16 @@
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     onMap = new OnMap ();
-    update();
 
     ui->setupUi(this);
 
+    this->setFinished(false);
+    this->setWinner(ZERO);
     this->setWindowTitle(tr("A-Maze-in-Game"));
     this->setFixedSize(QSize(X_SIZE, Y_SIZE));
     this->installEventFilter(this);
+
+    update();
 }
 
 MainWindow::~MainWindow()
@@ -23,29 +26,83 @@ MainWindow::~MainWindow()
 
 void MainWindow::paintEvent(QPaintEvent *event)
 {
-    static int flag = 0;
-
     QPainter p(this);
-
     int i,j;
-    int **aux = onMap->getMaze ();
+    int **aux = NULL;
+    static int winnerX = 27;
+    static int winnerY = 27;
 
-    for (i = 0; i < MAZE_SIZE ; i++) {
-        for (j = 0; j < MAZE_SIZE; j++) {
-            if (aux[i][j] == 1) {
-                p.fillRect ( TILE_SIZE*i, TILE_SIZE*j, TILE_SIZE,TILE_SIZE, QColor(0,0,0,255));
-            } else {
-                p.fillRect (TILE_SIZE*i, TILE_SIZE*j, TILE_SIZE, TILE_SIZE, QColor(255,255,255,255));
+    if (!(this->getFinished())) {
+
+        aux = onMap->getMaze ();
+
+        for (i = 0; i < MAZE_SIZE ; i++) {
+            for (j = 0; j < MAZE_SIZE; j++) {
+
+                switch (aux[i][j]) {
+                case 1: //Wall
+                    p.fillRect ( TILE_SIZE*i, TILE_SIZE*j, TILE_SIZE,TILE_SIZE, QColor(0,0,0,255));
+                    break;
+                case 0://Nothing
+                    p.fillRect (TILE_SIZE*i, TILE_SIZE*j, TILE_SIZE, TILE_SIZE, QColor(255,255,255,255));
+                    break;
+                case 2://Bonus Slow
+                    p.fillRect (TILE_SIZE*i, TILE_SIZE*j, TILE_SIZE, TILE_SIZE, QColor(128,0,128,255));
+                    break;
+                case 3://Bonus Fast
+                    p.fillRect (TILE_SIZE*i, TILE_SIZE*j, TILE_SIZE, TILE_SIZE, QColor(0,255,0,255));
+                    break;
+                default:
+                    qDebug("This should not be in the maze");
+                }
             }
         }
+
+        // Painting player 1
+        Player player = this->onMap->getPlayer1();
+
+        // Testing if reach exit
+        if ( (((player.getX() + 10)/TILE_SIZE) == winnerX) && (((player.getY()+ 10)/TILE_SIZE) == winnerY) ){
+            this->setFinished(true);
+            this->setWinner(PLAYER1);
+            return;
+        }
+
+        p.fillRect (player.getX(), player.getY(), TILE_SIZE, TILE_SIZE, QColor(255,0,0,255));
+
+        // painting player 2
+        player = this->onMap->getPlayer2();
+
+        if ( (((player.getX()+ 10)/TILE_SIZE) == winnerX ) && (((player.getY()+ 10)/TILE_SIZE) == winnerY) ){
+            this->setFinished(true);
+            this->setWinner(PLAYER2);
+            return;
+        }
+
+        p.fillRect (player.getX(), player.getY(), TILE_SIZE, TILE_SIZE, QColor(0,0,255,255));
+
+        // Exit Tile
+        p.setFont(QFont("Arial", 8, QFont::Bold));
+        p.setPen(QPen(QColor(255,0,0,255)));
+        p.drawText(TILE_SIZE*27, TILE_SIZE*27, TILE_SIZE,TILE_SIZE,Qt::AlignHCenter | Qt::AlignVCenter , tr("Exit") , NULL);
+
+
+    } else {
+        p.setFont(QFont("Arial", 40, QFont::Bold));
+        p.setPen(QPen(QColor(255,0,0,255)));
+
+        if ( this->getWinner() == PLAYER1 ) {
+            p.drawText(200,200, 400, 200,NULL, tr("Player 1 won !") , NULL);
+
+        } else if ( this->getWinner() == PLAYER2 ) {
+            p.drawText(200,200, 400, 200,NULL, tr("Player 2 won !") , NULL);
+        } else {
+            p.drawText(200,200, 400, 200,NULL, tr("Error in the winner function!") , NULL);
+
+        }
     }
-
-    Player player = this->onMap->getPlayer1();
-    p.fillRect (player.getX(), player.getY(), TILE_SIZE, TILE_SIZE, QColor(255,0,0,255));
-
-    player = this->onMap->getPlayer2();
-    p.fillRect (player.getX(), player.getY(), TILE_SIZE, TILE_SIZE, QColor(0,0,255,255));
 }
+
 
 // Filter of KeyEvent
 bool MainWindow::eventFilter(QObject *object, QEvent *event)
@@ -156,3 +213,31 @@ bool MainWindow::eventFilter(QObject *object, QEvent *event)
 
     }
 }
+
+void MainWindow::on_pushButton_clicked()
+{
+    onMap = new OnMap ();
+    this->setWinner(ZERO);
+    this->setFinished(false);
+    update();
+}
+int MainWindow::getWinner() const
+{
+    return winner;
+}
+
+void MainWindow::setWinner(int value)
+{
+    winner = value;
+}
+
+bool MainWindow::getFinished() const
+{
+    return finished;
+}
+
+void MainWindow::setFinished(bool value)
+{
+    finished = value;
+}
+

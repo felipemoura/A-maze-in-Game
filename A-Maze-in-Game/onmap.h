@@ -1,7 +1,6 @@
 #ifndef ONMAP_H
 #define ONMAP_H
 
-//#include <QFrame>
 #include "player.h"
 #include "mazegeneration.h"
 
@@ -30,8 +29,6 @@ public:
     Player getPlayer2() const;
     Player getPlayer1() const;
 
-   // QFrame getWidget() const;
-
     int getWidthGame() const;
     int getHeightGame() const;
 
@@ -44,8 +41,6 @@ public:
     void setPlayer1(const Player &value);
     void setPlayer2(const Player &value);
 
-    //void setWidget(const QFrame &value);
-
     void setWidthGame(int value);
     void setHeightGame(int value);
 
@@ -55,21 +50,17 @@ public:
     void setMaze(int **value);
 
 private:
-
     Player player1;
     Player player2;
 
-   // QFrame widget;
     int widthGame;
     int heightGame;
 
     int sizeSquare;
     int sizeMaze;
 
-    int **maze;
-
+    MazeGeneration* currentMaze;
     void update ();
-
 };
 
 #endif // ONMAP_H

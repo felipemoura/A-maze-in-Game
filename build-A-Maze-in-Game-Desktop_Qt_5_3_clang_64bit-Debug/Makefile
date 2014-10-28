@@ -153,6 +153,7 @@ DIST          = ../../../Qt/5.3/clang_64/mkspecs/features/spec_pre.prf \
 		../../../Qt/5.3/clang_64/mkspecs/features/qt_config.prf \
 		../../../Qt/5.3/clang_64/mkspecs/macx-clang/qmake.conf \
 		../../../Qt/5.3/clang_64/mkspecs/features/spec_post.prf \
+		../A-Maze-in-Game/.qmake.stash \
 		../../../Qt/5.3/clang_64/mkspecs/features/exclusive_builds.prf \
 		../../../Qt/5.3/clang_64/mkspecs/features/default_pre.prf \
 		../../../Qt/5.3/clang_64/mkspecs/features/mac/default_pre.prf \
@@ -317,6 +318,7 @@ Makefile: ../A-Maze-in-Game/A-Maze-in-Game.pro ../../../Qt/5.3/clang_64/mkspecs/
 		../../../Qt/5.3/clang_64/mkspecs/features/qt_config.prf \
 		../../../Qt/5.3/clang_64/mkspecs/macx-clang/qmake.conf \
 		../../../Qt/5.3/clang_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../../Qt/5.3/clang_64/mkspecs/features/exclusive_builds.prf \
 		../../../Qt/5.3/clang_64/mkspecs/features/default_pre.prf \
 		../../../Qt/5.3/clang_64/mkspecs/features/mac/default_pre.prf \
@@ -437,6 +439,7 @@ Makefile: ../A-Maze-in-Game/A-Maze-in-Game.pro ../../../Qt/5.3/clang_64/mkspecs/
 ../../../Qt/5.3/clang_64/mkspecs/features/qt_config.prf:
 ../../../Qt/5.3/clang_64/mkspecs/macx-clang/qmake.conf:
 ../../../Qt/5.3/clang_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 ../../../Qt/5.3/clang_64/mkspecs/features/exclusive_builds.prf:
 ../../../Qt/5.3/clang_64/mkspecs/features/default_pre.prf:
 ../../../Qt/5.3/clang_64/mkspecs/features/mac/default_pre.prf:
@@ -516,8 +519,14 @@ moc_mainwindow.cpp: ../../../Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/
 		../../../Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qbasictimer.h \
 		../../../Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QTimerEvent \
 		../../../Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qcoreevent.h \
+		../../../Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QTime \
+		../../../Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qdatetime.h \
 		../A-Maze-in-Game/position.h \
 		../A-Maze-in-Game/mazegeneration.h \
+		../../../Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QSet \
+		../../../Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qset.h \
+		../../../Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QPushButton \
+		../../../Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qpushbutton.h \
 		../A-Maze-in-Game/mainwindow.h
 	/Users/felipemoura/Qt/5.3/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -I/Users/felipemoura/Qt/5.3/clang_64/mkspecs/macx-clang -I/Users/felipemoura/GitHub/A-maze-in-Game/A-Maze-in-Game -I/Users/felipemoura/Qt/5.3/clang_64/lib/QtWidgets.framework/Headers -I/Users/felipemoura/Qt/5.3/clang_64/lib/QtGui.framework/Headers -I/Users/felipemoura/Qt/5.3/clang_64/lib/QtCore.framework/Headers -I. -F/Users/felipemoura/Qt/5.3/clang_64/lib ../A-Maze-in-Game/mainwindow.h -o moc_mainwindow.cpp
 
@@ -550,8 +559,14 @@ main.o: ../A-Maze-in-Game/main.cpp ../A-Maze-in-Game/mainwindow.h \
 		../../../Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qbasictimer.h \
 		../../../Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QTimerEvent \
 		../../../Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qcoreevent.h \
+		../../../Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QTime \
+		../../../Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qdatetime.h \
 		../A-Maze-in-Game/position.h \
 		../A-Maze-in-Game/mazegeneration.h \
+		../../../Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QSet \
+		../../../Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qset.h \
+		../../../Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QPushButton \
+		../../../Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qpushbutton.h \
 		../../../Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QApplication \
 		../../../Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qapplication.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../A-Maze-in-Game/main.cpp
@@ -565,8 +580,14 @@ mainwindow.o: ../A-Maze-in-Game/mainwindow.cpp ../A-Maze-in-Game/mainwindow.h \
 		../../../Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qbasictimer.h \
 		../../../Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QTimerEvent \
 		../../../Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qcoreevent.h \
+		../../../Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QTime \
+		../../../Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qdatetime.h \
 		../A-Maze-in-Game/position.h \
 		../A-Maze-in-Game/mazegeneration.h \
+		../../../Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QSet \
+		../../../Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qset.h \
+		../../../Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QPushButton \
+		../../../Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qpushbutton.h \
 		ui_mainwindow.h \
 		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/QtGui \
 		../../../Qt/5.3/clang_64/lib/QtGui.framework/Versions/5/Headers/qaccessible.h \
@@ -674,7 +695,10 @@ player.o: ../A-Maze-in-Game/player.cpp ../A-Maze-in-Game/player.h \
 		../../../Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qbasictimer.h \
 		../../../Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QTimerEvent \
 		../../../Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qcoreevent.h \
-		../A-Maze-in-Game/position.h
+		../../../Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QTime \
+		../../../Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qdatetime.h \
+		../A-Maze-in-Game/position.h \
+		../A-Maze-in-Game/mazegeneration.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o player.o ../A-Maze-in-Game/player.cpp
 
 mazegeneration.o: ../A-Maze-in-Game/mazegeneration.cpp ../A-Maze-in-Game/mazegeneration.h \
@@ -690,8 +714,19 @@ onmap.o: ../A-Maze-in-Game/onmap.cpp ../A-Maze-in-Game/onmap.h \
 		../../../Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qbasictimer.h \
 		../../../Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QTimerEvent \
 		../../../Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qcoreevent.h \
+		../../../Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QTime \
+		../../../Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qdatetime.h \
 		../A-Maze-in-Game/position.h \
-		../A-Maze-in-Game/mazegeneration.h
+		../A-Maze-in-Game/mazegeneration.h \
+		../A-Maze-in-Game/mainwindow.h \
+		../../../Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QMainWindow \
+		../../../Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmainwindow.h \
+		../../../Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QSet \
+		../../../Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qset.h \
+		../../../Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QPushButton \
+		../../../Qt/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qpushbutton.h \
+		../../../Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QDebug \
+		../../../Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qdebug.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o onmap.o ../A-Maze-in-Game/onmap.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 

@@ -1,10 +1,12 @@
 #include "player.h"
+#include "mazegeneration.h"
 
 // Constructors
 Player::Player()
 {
-    this->speed.setX(2);
-    this->speed.setY(2);
+    this->speed.setX(4);
+    this->speed.setY(4);
+    this->numberOfBonus = 0;
 }
 
 Player::Player (Position desiredPosition, Position desiredSpeed, string desiredUsername)
@@ -14,17 +16,64 @@ Player::Player (Position desiredPosition, Position desiredSpeed, string desiredU
     setUsername(desiredUsername);
 }
 
-
 // Destructors
 Player::~Player()
 {
 
 }
 
-
 // Methods
 Position Player::desiredPosition ()
 {
+    Position a;
+    return(a);
+}
+int Player::bonusNow()
+{
+    return numberOfBonus;
+}
+
+void Player::addBonus(int type)
+{
+    this->bonus=QTime::currentTime ();
+    numberOfBonus+=1;
+    typeBonus=type;
+}
+
+void Player::testEndBonus()
+{
+
+
+    if ((this->bonus.msecsTo ( QTime::currentTime()) > 5000 ) && (numberOfBonus == 1) ) {
+        //qDebug("%d",bonus.msecsTo ( QTime::currentTime()));
+        numberOfBonus=0;
+        this->speed=Position(4,4);
+        /*
+        if (typeBonus==SBONUS)
+        {
+            Position newSpeed= Position(this->getSpeed().getX()*2,this->getSpeed().getY()*2);
+            this->setSpeed(newSpeed);
+
+        }else
+        {
+            Position newSpeed= Position(this->getSpeed().getX()*2,this->getSpeed().getY()*2);
+            this->setSpeed(newSpeed);
+
+        }
+        if (typeBonus==FBONUS)
+        {
+            Position newSpeed= Position(this->getSpeed().getX()/2,this->getSpeed().getY()/2);
+            this->setSpeed(newSpeed);
+
+        }else
+        {
+            Position newSpeed= Position(this->getSpeed().getX()/2,this->getSpeed().getY()/2);
+            this->setSpeed(newSpeed);
+
+        }
+        */
+
+    }
 
 }
 
@@ -51,13 +100,6 @@ string Player::getUsername() const {
     return username;
 }
 
-QBasicTimer Player::getTimerSlow() const {
-    return timerSlow;
-}
-
-QBasicTimer Player::getTimerFast() const {
-    return timerFast;
-}
 
 
 // Setters
@@ -73,10 +115,4 @@ void Player::setUsername(const string &value) {
     username = value;
 }
 
-void Player::setTimerSlow(const QBasicTimer &value) {
-    timerSlow = value;
-}
 
-void Player::setTimerFast(const QBasicTimer &value) {
-    timerFast = value;
-}

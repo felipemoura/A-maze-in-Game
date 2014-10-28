@@ -23,14 +23,14 @@ MazeGeneration::~MazeGeneration()
         }
     }
 
-   if (maze != NULL) {
-    delete [] maze;
+    if (maze != NULL) {
+        delete [] maze;
     }
 }
 
 int** MazeGeneration::mazeGeneration ()
 {
-    int i, j;
+    int i, j,a,b, nb_bonus = 0;
 
     maze = new int* [getSize()];
 
@@ -49,6 +49,20 @@ int** MazeGeneration::mazeGeneration ()
     // Generates the maze recursively
     workOnCell( 1,1 );
 
+    //Adds 5 bonuses
+    while (nb_bonus < 5) {
+        a=rand() % 8;
+        b=rand() % 8;
+        if ( (a==1) && (b==1) ){
+            a=5;
+            b=5;
+        }
+
+        if (maze[a][b] == 0) {
+            maze[a][b] = 2 + rand() % 2;
+            nb_bonus += 1;
+        }
+    }
     return getMaze();
 }
 
@@ -117,10 +131,19 @@ void MazeGeneration::workOnCell (int xCell,int yCell)
 
 int MazeGeneration::getPositionMaze(int posX, int posY)
 {
-    if ( (posX >= ZERO) && (posY >= ZERO) && (posX < MAZE_SIZE) && (posY < MAZE_SIZE) ){
+    if ( (posX >= ZERO) && (posY >= ZERO) && (posX < MAZE_SIZE) && (posY < MAZE_SIZE) ) {
         return this->maze[posX][posY];
     } else {
         return INVALID;
+    }
+}
+
+void MazeGeneration::setPositionMaze(int posX, int posY, int value)
+{
+    if ( (posX >= ZERO) && (posY >= ZERO) && (posX < MAZE_SIZE) && (posY < MAZE_SIZE) ){
+        maze[posX][posY]=value;
+    } else {
+        qDebug("Cell out of bound");
     }
 }
 
