@@ -5,19 +5,7 @@
 // Constructor
 OnMap::OnMap()
 {
-<<<<<<< HEAD
     currentMaze= new MazeGeneration ();
-=======
-    //Player ();
-
-    currentMaze= new MazeGeneration ();
-    /*
-    setMaze( desiredMaze->getMaze() );
-
-    setWidthGame(desiredMaze->getSize());
-    setHeightGame(desiredMaze->getSize());
-    */
->>>>>>> FETCH_HEAD
 }
 
 // Destructor
@@ -41,19 +29,11 @@ void OnMap::collision (int option, int direction, int desiredX, int desiredY)
     int xMiddle, yMiddle;
 
 
-<<<<<<< HEAD
     //First we look if the bonus end:
     player1.testEndBonus();
     player2.testEndBonus();
 
     //Second we look at the collisions
-=======
-//First we look if the bonus end:
-player1.testEndBonus();
-player2.testEndBonus();
-
-//Second we look at the collisions
->>>>>>> FETCH_HEAD
     switch (direction) {
     case UP:
         xSquare=(desiredX)/TILE_SIZE;
@@ -89,22 +69,12 @@ player2.testEndBonus();
         break;
     }
 
-<<<<<<< HEAD
     pos = this->currentMaze->getPositionMaze(xSquare, ySquare);
     pos2 = this->currentMaze->getPositionMaze(xSquare2, ySquare2);
 
     if (pos == INVALID) return;
 
     if ((pos == WALL)||(pos2==WALL)) {
-=======
-      pos = this->currentMaze->getPositionMaze(xSquare, ySquare);
-      pos2 = this->currentMaze->getPositionMaze(xSquare2, ySquare2);
-
-    if (pos == INVALID) return;
-
-    if ((pos == WALL)||(pos2==WALL))
-    {
->>>>>>> FETCH_HEAD
         //We put the player just near the wall
         xMiddle=(desiredX + 0.5* TILE_SIZE )/TILE_SIZE;
         yMiddle=(desiredY + 0.5 * TILE_SIZE )/TILE_SIZE;
@@ -114,7 +84,6 @@ player2.testEndBonus();
             player1.setY(yMiddle*TILE_SIZE);
 
         } else {
-<<<<<<< HEAD
             player2.setX(xMiddle*TILE_SIZE);
             player2.setY(yMiddle*TILE_SIZE);
         }
@@ -126,58 +95,27 @@ player2.testEndBonus();
     if (pos == SBONUS) {
         //We divide by 2 the quickness of the player
         if ((option == PLAYER1)&&(player1.bonusNow()==0)) {
-=======
-           player2.setX(xMiddle*TILE_SIZE);
-           player2.setY(yMiddle*TILE_SIZE);
-        }
-    return;
-    }
-
-    //We test the bonus after the wall to avoid the possibility of touching a bonus where it is not possible to commit.
-    if (pos == SBONUS)//SlowBonus
-    {
-
-
-
-        //We divide by 2 the quickness of the player
-         if ((option == PLAYER1)&&(player1.bonusNow()==0)) {
->>>>>>> FETCH_HEAD
             //We put 0 where the bonus is.
             this->currentMaze->setPositionMaze(xSquare,ySquare,0);
             //Position newSpeed= Position(player1.getSpeed().getX()/2,player1.getSpeed().getY()/2);
             Position newSpeed= Position(1,1);
             player1.setSpeed(newSpeed);
             player1.addBonus(pos);
-<<<<<<< HEAD
         }
         if ((option == PLAYER2)&&(player2.bonusNow()==0)) {
             //We put 0 where the bonus is.
-=======
-         }
-        if ((option == PLAYER2)&&(player2.bonusNow()==0)) {
-        //We put 0 where the bonus is.
->>>>>>> FETCH_HEAD
             this->currentMaze->setPositionMaze(xSquare,ySquare,0);
             //Position newSpeed= Position(player2.getSpeed().getX()/2,player2.getSpeed().getY()/2);
             Position newSpeed= Position(1,1);
             player2.setSpeed(newSpeed);
             player2.addBonus(pos);
         }
-<<<<<<< HEAD
     }
 
     //FastBonus
     if (pos == FBONUS) {
         //We divide by 2 the quickness of the player
         if ((option == PLAYER1)&&(player1.bonusNow()==0)) {
-=======
-
-    }
-    if (pos == FBONUS)//FastBonus
-    {
-        //We divide by 2 the quickness of the player
-         if ((option == PLAYER1)&&(player1.bonusNow()==0)) {
->>>>>>> FETCH_HEAD
             //We put 0 where the bonus is.
             this->currentMaze->setPositionMaze(xSquare,ySquare,0);
             //Position newSpeed= Position(player1.getSpeed().getX()*2,player1.getSpeed().getY()*2);
@@ -194,10 +132,6 @@ player2.testEndBonus();
             player2.addBonus(pos);
         }
     }
-<<<<<<< HEAD
-=======
-
->>>>>>> FETCH_HEAD
 
 
     if (option == PLAYER1) {

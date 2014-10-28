@@ -6,11 +6,7 @@ Player::Player()
 {
     this->speed.setX(4);
     this->speed.setY(4);
-<<<<<<< HEAD
     this->numberOfBonus = 0;
-=======
-    this->numberOfBonus=0;
->>>>>>> FETCH_HEAD
 }
 
 Player::Player (Position desiredPosition, Position desiredSpeed, string desiredUsername)
@@ -48,14 +44,8 @@ void Player::testEndBonus()
 {
 
 
-<<<<<<< HEAD
     if ((this->bonus.msecsTo ( QTime::currentTime()) > 5000 ) && (numberOfBonus == 1) ) {
         //qDebug("%d",bonus.msecsTo ( QTime::currentTime()));
-=======
-    if ((this->bonus.msecsTo ( QTime::currentTime())>5000)&&(numberOfBonus==1))
-    {
-        qDebug("%d",bonus.msecsTo ( QTime::currentTime()));
->>>>>>> FETCH_HEAD
         numberOfBonus=0;
         this->speed=Position(4,4);
         /*

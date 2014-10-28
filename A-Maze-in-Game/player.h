@@ -47,12 +47,6 @@ public:
 
     string getUsername() const;
 
-<<<<<<< HEAD
-=======
-    QBasicTimer EndSlow;
-    QBasicTimer EndFast;
-
->>>>>>> FETCH_HEAD
     // Setters
     void setSpeed(const Position &value);
     void setPosition(const Position &value);
@@ -61,17 +55,8 @@ public:
 
     void setTimerSlow(const QBasicTimer &value);
     void setTimerFast(const QBasicTimer &value);
-<<<<<<< HEAD
     
     
-=======
-    int bonusNow();
-    void addBonus(int );
-    void testEndBonus();
-    // Methods
-    Position desiredPosition ();
-    void applyBonus (int);
->>>>>>> FETCH_HEAD
 };
 
 #endif // PLAYER_H

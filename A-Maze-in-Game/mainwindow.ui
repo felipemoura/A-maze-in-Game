@@ -14,7 +14,6 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-<<<<<<< HEAD
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
@@ -26,32 +25,6 @@
     </property>
     <property name="text">
      <string>Reset</string>
-=======
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>1070</x>
-      <y>20</y>
-      <width>46</width>
-      <height>13</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Player1</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_2">
-    <property name="geometry">
-     <rect>
-      <x>1070</x>
-      <y>50</y>
-      <width>46</width>
-      <height>13</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Player2</string>
->>>>>>> FETCH_HEAD
     </property>
    </widget>
   </widget>

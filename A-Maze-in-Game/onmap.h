@@ -59,10 +59,6 @@ private:
     int sizeSquare;
     int sizeMaze;
 
-<<<<<<< HEAD
-=======
-    //int **maze;
->>>>>>> FETCH_HEAD
     MazeGeneration* currentMaze;
     void update ();
 };
