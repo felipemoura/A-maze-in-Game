@@ -50,13 +50,15 @@ SOURCES       = ../A-Maze-in-Game/main.cpp \
 		../A-Maze-in-Game/position.cpp \
 		../A-Maze-in-Game/player.cpp \
 		../A-Maze-in-Game/mazegeneration.cpp \
-		../A-Maze-in-Game/onmap.cpp moc_mainwindow.cpp
+		../A-Maze-in-Game/onmap.cpp qrc_Tiles.cpp \
+		moc_mainwindow.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
 		position.o \
 		player.o \
 		mazegeneration.o \
 		onmap.o \
+		qrc_Tiles.o \
 		moc_mainwindow.o
 DIST          = ../../../Qt/5.3/clang_64/mkspecs/features/spec_pre.prf \
 		../../../Qt/5.3/clang_64/mkspecs/qdevice.pri \
@@ -340,6 +342,7 @@ Makefile: ../A-Maze-in-Game/A-Maze-in-Game.pro ../../../Qt/5.3/clang_64/mkspecs/
 		../../../Qt/5.3/clang_64/mkspecs/features/yacc.prf \
 		../../../Qt/5.3/clang_64/mkspecs/features/lex.prf \
 		../A-Maze-in-Game/A-Maze-in-Game.pro \
+		../A-Maze-in-Game/Tiles.qrc \
 		/Users/felipemoura/Qt/5.3/clang_64/lib/QtWidgets.framework/QtWidgets.prl \
 		/Users/felipemoura/Qt/5.3/clang_64/lib/QtGui.framework/QtGui.prl \
 		/Users/felipemoura/Qt/5.3/clang_64/lib/QtCore.framework/QtCore.prl
@@ -461,6 +464,7 @@ Makefile: ../A-Maze-in-Game/A-Maze-in-Game.pro ../../../Qt/5.3/clang_64/mkspecs/
 ../../../Qt/5.3/clang_64/mkspecs/features/yacc.prf:
 ../../../Qt/5.3/clang_64/mkspecs/features/lex.prf:
 ../A-Maze-in-Game/A-Maze-in-Game.pro:
+../A-Maze-in-Game/Tiles.qrc:
 /Users/felipemoura/Qt/5.3/clang_64/lib/QtWidgets.framework/QtWidgets.prl:
 /Users/felipemoura/Qt/5.3/clang_64/lib/QtGui.framework/QtGui.prl:
 /Users/felipemoura/Qt/5.3/clang_64/lib/QtCore.framework/QtCore.prl:
@@ -483,7 +487,7 @@ A-Maze-in-Game.app/Contents/Info.plist:
 	@sed -e "s,@SHORT_VERSION@,1.0,g" -e "s,@TYPEINFO@,????,g" -e "s,@ICON@,,g" -e "s,@BUNDLEIDENTIFIER@,com.example.A-Maze-in-Game,g" -e "s,@EXECUTABLE@,A-Maze-in-Game,g" -e "s,@TYPEINFO@,????,g" ../../../Qt/5.3/clang_64/mkspecs/macx-clang/Info.plist.app >A-Maze-in-Game.app/Contents/Info.plist
 dist: 
 	@test -d .tmp/A-Maze-in-Game1.0.0 || mkdir -p .tmp/A-Maze-in-Game1.0.0
-	$(COPY_FILE) --parents $(DIST) .tmp/A-Maze-in-Game1.0.0/ && $(COPY_FILE) --parents ../A-Maze-in-Game/mainwindow.h ../A-Maze-in-Game/position.h ../A-Maze-in-Game/player.h ../A-Maze-in-Game/mazegeneration.h ../A-Maze-in-Game/onmap.h .tmp/A-Maze-in-Game1.0.0/ && $(COPY_FILE) --parents ../A-Maze-in-Game/main.cpp ../A-Maze-in-Game/mainwindow.cpp ../A-Maze-in-Game/position.cpp ../A-Maze-in-Game/player.cpp ../A-Maze-in-Game/mazegeneration.cpp ../A-Maze-in-Game/onmap.cpp .tmp/A-Maze-in-Game1.0.0/ && $(COPY_FILE) --parents ../A-Maze-in-Game/mainwindow.ui .tmp/A-Maze-in-Game1.0.0/ && (cd `dirname .tmp/A-Maze-in-Game1.0.0` && $(TAR) A-Maze-in-Game1.0.0.tar A-Maze-in-Game1.0.0 && $(COMPRESS) A-Maze-in-Game1.0.0.tar) && $(MOVE) `dirname .tmp/A-Maze-in-Game1.0.0`/A-Maze-in-Game1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/A-Maze-in-Game1.0.0
+	$(COPY_FILE) --parents $(DIST) .tmp/A-Maze-in-Game1.0.0/ && $(COPY_FILE) --parents ../A-Maze-in-Game/Tiles.qrc .tmp/A-Maze-in-Game1.0.0/ && $(COPY_FILE) --parents ../A-Maze-in-Game/mainwindow.h ../A-Maze-in-Game/position.h ../A-Maze-in-Game/player.h ../A-Maze-in-Game/mazegeneration.h ../A-Maze-in-Game/onmap.h .tmp/A-Maze-in-Game1.0.0/ && $(COPY_FILE) --parents ../A-Maze-in-Game/main.cpp ../A-Maze-in-Game/mainwindow.cpp ../A-Maze-in-Game/position.cpp ../A-Maze-in-Game/player.cpp ../A-Maze-in-Game/mazegeneration.cpp ../A-Maze-in-Game/onmap.cpp .tmp/A-Maze-in-Game1.0.0/ && $(COPY_FILE) --parents ../A-Maze-in-Game/mainwindow.ui .tmp/A-Maze-in-Game1.0.0/ && (cd `dirname .tmp/A-Maze-in-Game1.0.0` && $(TAR) A-Maze-in-Game1.0.0.tar A-Maze-in-Game1.0.0 && $(COMPRESS) A-Maze-in-Game1.0.0.tar) && $(MOVE) `dirname .tmp/A-Maze-in-Game1.0.0`/A-Maze-in-Game1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/A-Maze-in-Game1.0.0
 
 
 clean:compiler_clean 
@@ -506,8 +510,16 @@ check: first
 
 compiler_objective_c_make_all:
 compiler_objective_c_clean:
-compiler_rcc_make_all:
+compiler_rcc_make_all: qrc_Tiles.cpp
 compiler_rcc_clean:
+	-$(DEL_FILE) qrc_Tiles.cpp
+qrc_Tiles.cpp: ../A-Maze-in-Game/Tiles.qrc \
+		../A-Maze-in-Game/images/path.png \
+		../A-Maze-in-Game/images/player02.png \
+		../A-Maze-in-Game/images/player01.png \
+		../A-Maze-in-Game/images/brick.png
+	/Users/felipemoura/Qt/5.3/clang_64/bin/rcc -name Tiles ../A-Maze-in-Game/Tiles.qrc -o qrc_Tiles.cpp
+
 compiler_moc_header_make_all: moc_mainwindow.cpp
 compiler_moc_header_clean:
 	-$(DEL_FILE) moc_mainwindow.cpp
@@ -546,7 +558,7 @@ compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: compiler_moc_header_clean compiler_uic_clean 
+compiler_clean: compiler_rcc_clean compiler_moc_header_clean compiler_uic_clean 
 
 ####### Compile
 
@@ -728,6 +740,9 @@ onmap.o: ../A-Maze-in-Game/onmap.cpp ../A-Maze-in-Game/onmap.h \
 		../../../Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/QDebug \
 		../../../Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers/qdebug.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o onmap.o ../A-Maze-in-Game/onmap.cpp
+
+qrc_Tiles.o: qrc_Tiles.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_Tiles.o qrc_Tiles.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp

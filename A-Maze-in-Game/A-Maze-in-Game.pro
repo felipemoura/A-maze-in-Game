@@ -26,3 +26,6 @@ HEADERS  += mainwindow.h \
     onmap.h
 
 FORMS    += mainwindow.ui
+
+RESOURCES += \
+    Tiles.qrc

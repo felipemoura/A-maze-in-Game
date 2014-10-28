@@ -41,10 +41,12 @@ void MainWindow::paintEvent(QPaintEvent *event)
 
                 switch (aux[i][j]) {
                 case 1: //Wall
-                    p.fillRect ( TILE_SIZE*i, TILE_SIZE*j, TILE_SIZE,TILE_SIZE, QColor(0,0,0,255));
+                    p.drawPixmap(TILE_SIZE*i, TILE_SIZE*j, QPixmap(":/images/brick.png"));
+                    // p.fillRect ( TILE_SIZE*i, TILE_SIZE*j, TILE_SIZE,TILE_SIZE, QPixmap(":/images/brick.png"));//QColor(0,0,0,255));
                     break;
-                case 0://Nothing
-                    p.fillRect (TILE_SIZE*i, TILE_SIZE*j, TILE_SIZE, TILE_SIZE, QColor(255,255,255,255));
+                case 0://NPath
+                    p.drawPixmap(TILE_SIZE*i, TILE_SIZE*j, QPixmap(":/images/path.png"));
+                    //                    p.fillRect (TILE_SIZE*i, TILE_SIZE*j, TILE_SIZE, TILE_SIZE, QColor(255,255,255,255));
                     break;
                 case 2://Bonus Slow
                     p.fillRect (TILE_SIZE*i, TILE_SIZE*j, TILE_SIZE, TILE_SIZE, QColor(128,0,128,255));
@@ -68,7 +70,8 @@ void MainWindow::paintEvent(QPaintEvent *event)
             return;
         }
 
-        p.fillRect (player.getX(), player.getY(), TILE_SIZE, TILE_SIZE, QColor(255,0,0,255));
+        p.drawPixmap(player.getX(), player.getY(), QPixmap(":/images/player01.png"));
+        //p.fillRect (player.getX(), player.getY(), TILE_SIZE, TILE_SIZE, QColor(255,0,0,255));
 
         // painting player 2
         player = this->onMap->getPlayer2();
@@ -79,11 +82,15 @@ void MainWindow::paintEvent(QPaintEvent *event)
             return;
         }
 
-        p.fillRect (player.getX(), player.getY(), TILE_SIZE, TILE_SIZE, QColor(0,0,255,255));
+        p.drawPixmap(player.getX(), player.getY(), QPixmap(":/images/player02.png"));
+
+        //p.fillRect (player.getX(), player.getY(), TILE_SIZE, TILE_SIZE, QColor(0,0,255,255));
+
 
         // Exit Tile
         p.setFont(QFont("Arial", 8, QFont::Bold));
-        p.setPen(QPen(QColor(255,0,0,255)));
+        //p.setPen(QPen(QColor(255,0,0,255)));
+
         p.drawText(TILE_SIZE*27, TILE_SIZE*27, TILE_SIZE,TILE_SIZE,Qt::AlignHCenter | Qt::AlignVCenter , tr("Exit") , NULL);
 
 
