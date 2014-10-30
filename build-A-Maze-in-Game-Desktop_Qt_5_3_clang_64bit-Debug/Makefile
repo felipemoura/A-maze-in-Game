@@ -515,7 +515,9 @@ compiler_rcc_clean:
 	-$(DEL_FILE) qrc_Tiles.cpp
 qrc_Tiles.cpp: ../A-Maze-in-Game/Tiles.qrc \
 		../A-Maze-in-Game/images/path.png \
+		../A-Maze-in-Game/images/bonus_slow.png \
 		../A-Maze-in-Game/images/player02.png \
+		../A-Maze-in-Game/images/bonus_fast.png \
 		../A-Maze-in-Game/images/player01.png \
 		../A-Maze-in-Game/images/brick.png
 	/Users/felipemoura/Qt/5.3/clang_64/bin/rcc -name Tiles ../A-Maze-in-Game/Tiles.qrc -o qrc_Tiles.cpp
