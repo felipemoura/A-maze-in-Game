@@ -50,9 +50,9 @@ int** MazeGeneration::mazeGeneration ()
     workOnCell( 1,1 );
 
     //Adds 5 bonuses
-    while (nb_bonus < 5) {
-        a=rand() % 8;
-        b=rand() % 8;
+    while (nb_bonus < 15) {
+        a=rand() % getSize();
+        b=rand() % getSize();
         if ( (a==1) && (b==1) ){
             a=5;
             b=5;
@@ -61,11 +61,27 @@ int** MazeGeneration::mazeGeneration ()
         if (maze[a][b] == 0) {
             maze[a][b] = 2 + rand() % 2;
             nb_bonus += 1;
+            //qDebug("We add a bonus");
         }
     }
     return getMaze();
 }
+void MazeGeneration::addBonus()
+{
+    //We put a new bonus on the Map
+        int a,b;
+        int bonus_added=0;
 
+     while (bonus_added ==0) {
+            a=rand() % getSize();
+            b=rand() % getSize();
+        if (maze[a][b] == 0) {
+            maze[a][b] = 2 + rand() % 2;
+            bonus_added += 1;
+            qDebug("We add a bonus");
+        }
+    }
+}
 void MazeGeneration::workOnCell (int xCell,int yCell)
 {
     int i;

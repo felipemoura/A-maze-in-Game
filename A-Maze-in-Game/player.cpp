@@ -48,6 +48,8 @@ void Player::testEndBonus()
         //qDebug("%d",bonus.msecsTo ( QTime::currentTime()));
         numberOfBonus=0;
         this->speed=Position(4,4);
+
+
         /*
         if (typeBonus==SBONUS)
         {

@@ -101,6 +101,7 @@ void OnMap::collision (int option, int direction, int desiredX, int desiredY)
             Position newSpeed= Position(1,1);
             player1.setSpeed(newSpeed);
             player1.addBonus(pos);
+            currentMaze->addBonus();
         }
         if ((option == PLAYER2)&&(player2.bonusNow()==0)) {
             //We put 0 where the bonus is.
@@ -109,6 +110,7 @@ void OnMap::collision (int option, int direction, int desiredX, int desiredY)
             Position newSpeed= Position(1,1);
             player2.setSpeed(newSpeed);
             player2.addBonus(pos);
+            currentMaze->addBonus();
         }
     }
 
@@ -122,6 +124,7 @@ void OnMap::collision (int option, int direction, int desiredX, int desiredY)
             Position newSpeed= Position(7,7);
             player1.setSpeed(newSpeed);
             player1.addBonus(pos);
+            currentMaze->addBonus();
         }
         if ((option == PLAYER2)&&(player2.bonusNow()==0)) {
             //We put 0 where the bonus is.
@@ -130,6 +133,7 @@ void OnMap::collision (int option, int direction, int desiredX, int desiredY)
             Position newSpeed= Position(7,7);
             player2.setSpeed(newSpeed);
             player2.addBonus(pos);
+            currentMaze->addBonus();
         }
     }
 
