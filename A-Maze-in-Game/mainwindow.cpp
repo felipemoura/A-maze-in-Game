@@ -48,11 +48,13 @@ void MainWindow::paintEvent(QPaintEvent *event)
                     p.drawPixmap(TILE_SIZE*i, TILE_SIZE*j, QPixmap(":/images/path.png"));
                     //                    p.fillRect (TILE_SIZE*i, TILE_SIZE*j, TILE_SIZE, TILE_SIZE, QColor(255,255,255,255));
                     break;
-                case 2://Bonus Slow
-                    p.fillRect (TILE_SIZE*i, TILE_SIZE*j, TILE_SIZE, TILE_SIZE, QColor(128,0,128,255));
+                case 2://Bonus Fast
+                    p.drawPixmap(TILE_SIZE*i, TILE_SIZE*j, QPixmap(":/images/bonus_fast.png"));
+                    //p.fillRect (TILE_SIZE*i, TILE_SIZE*j, TILE_SIZE, TILE_SIZE, QColor(128,0,128,255));
                     break;
-                case 3://Bonus Fast
-                    p.fillRect (TILE_SIZE*i, TILE_SIZE*j, TILE_SIZE, TILE_SIZE, QColor(0,255,0,255));
+                case 3://Bonus Slow
+                    p.drawPixmap(TILE_SIZE*i, TILE_SIZE*j, QPixmap(":/images/bonus_slow.png"));
+                    //p.fillRect (TILE_SIZE*i, TILE_SIZE*j, TILE_SIZE, TILE_SIZE, QColor(0,255,0,255));
                     break;
                 default:
                     qDebug("This should not be in the maze");

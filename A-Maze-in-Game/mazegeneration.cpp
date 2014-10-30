@@ -78,7 +78,7 @@ void MazeGeneration::addBonus()
         if (maze[a][b] == 0) {
             maze[a][b] = 2 + rand() % 2;
             bonus_added += 1;
-            qDebug("We add a bonus");
+            //qDebug("We add a bonus");
         }
     }
 }

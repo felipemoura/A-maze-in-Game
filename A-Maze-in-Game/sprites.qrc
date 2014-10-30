@@ -4,7 +4,5 @@
         <file>images/path.png</file>
         <file>images/player01.png</file>
         <file>images/player02.png</file>
-        <file>images/bonus_fast.png</file>
-        <file>images/bonus_slow.png</file>
     </qresource>
 </RCC>
