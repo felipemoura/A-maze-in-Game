@@ -39,6 +39,7 @@ public:
         pushButton = new QPushButton(centralWidget);
         pushButton->setObjectName(QStringLiteral("pushButton"));
         pushButton->setGeometry(QRect(510, 30, 115, 32));
+        pushButton->setFocusPolicy(Qt::NoFocus);
         MainWindow->setCentralWidget(centralWidget);
 
         retranslateUi(MainWindow);
