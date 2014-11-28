@@ -31,6 +31,7 @@ public:
     int getPositionMaze(int,int);
     void setPositionMaze(int,int,int);
     void addBonus();
+
     // Getters
     int **getMaze() const;
     int getSize() const;

@@ -5,10 +5,9 @@
 
     Objective is to hold information about x Position and y Position in the maze
 
+*/
 
-                    */
-
-#define START_POSITION 16*26
+#define START_POSITION 16*1
 
 class Position
 {

@@ -7,6 +7,14 @@
 #include <QTime>
 #include "position.h"
 
+/* Player Class
+
+    Objective is to hold all information about player
+        Position
+        Bonuses Activated
+        Timers
+*/
+
 using namespace std;
 
 class Player : public Position
@@ -25,14 +33,12 @@ private:
 public:
     // Constructors
     Player ();
-    Player (Position, Position, string);
 
     // Destructors
     ~Player();
 
     // Methods
     Position desiredPosition ();
-    void applyBonus (int);
     int bonusNow();
     void addBonus(int );
     void testEndBonus();
@@ -45,18 +51,10 @@ public:
     Position getPosition() const;
     Position getSpeed() const;
 
-    string getUsername() const;
-
     // Setters
     void setSpeed(const Position &value);
     void setPosition(const Position &value);
 
-    void setUsername(const string &value);
-
-    void setTimerSlow(const QBasicTimer &value);
-    void setTimerFast(const QBasicTimer &value);
-    
-    
 };
 
 #endif // PLAYER_H

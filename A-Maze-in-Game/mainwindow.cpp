@@ -42,19 +42,15 @@ void MainWindow::paintEvent(QPaintEvent *event)
                 switch (aux[i][j]) {
                 case 1: //Wall
                     p.drawPixmap(TILE_SIZE*i, TILE_SIZE*j, QPixmap(":/images/brick.png"));
-                    // p.fillRect ( TILE_SIZE*i, TILE_SIZE*j, TILE_SIZE,TILE_SIZE, QPixmap(":/images/brick.png"));//QColor(0,0,0,255));
                     break;
                 case 0://NPath
                     p.drawPixmap(TILE_SIZE*i, TILE_SIZE*j, QPixmap(":/images/path.png"));
-                    //                    p.fillRect (TILE_SIZE*i, TILE_SIZE*j, TILE_SIZE, TILE_SIZE, QColor(255,255,255,255));
                     break;
                 case 2://Bonus Fast
                     p.drawPixmap(TILE_SIZE*i, TILE_SIZE*j, QPixmap(":/images/bonus_fast.png"));
-                    //p.fillRect (TILE_SIZE*i, TILE_SIZE*j, TILE_SIZE, TILE_SIZE, QColor(128,0,128,255));
                     break;
                 case 3://Bonus Slow
                     p.drawPixmap(TILE_SIZE*i, TILE_SIZE*j, QPixmap(":/images/bonus_slow.png"));
-                    //p.fillRect (TILE_SIZE*i, TILE_SIZE*j, TILE_SIZE, TILE_SIZE, QColor(0,255,0,255));
                     break;
                 default:
                     qDebug("This should not be in the maze");
@@ -73,7 +69,6 @@ void MainWindow::paintEvent(QPaintEvent *event)
         }
 
         p.drawPixmap(player.getX(), player.getY(), QPixmap(":/images/player01.png"));
-        //p.fillRect (player.getX(), player.getY(), TILE_SIZE, TILE_SIZE, QColor(255,0,0,255));
 
         // painting player 2
         player = this->onMap->getPlayer2();
@@ -86,32 +81,25 @@ void MainWindow::paintEvent(QPaintEvent *event)
 
         p.drawPixmap(player.getX(), player.getY(), QPixmap(":/images/player02.png"));
 
-        //p.fillRect (player.getX(), player.getY(), TILE_SIZE, TILE_SIZE, QColor(0,0,255,255));
-
-
         // Exit Tile
         p.setFont(QFont("Arial", 8, QFont::Bold));
-        //p.setPen(QPen(QColor(255,0,0,255)));
-
         p.drawText(TILE_SIZE*27, TILE_SIZE*27, TILE_SIZE,TILE_SIZE,Qt::AlignHCenter | Qt::AlignVCenter , tr("Exit") , NULL);
-
 
     } else {
         p.setFont(QFont("Arial", 40, QFont::Bold));
         p.setPen(QPen(QColor(255,0,0,255)));
 
         if ( this->getWinner() == PLAYER1 ) {
-            p.drawText(200,200, 400, 200,NULL, tr("Player 1 won !") , NULL);
+            p.drawText(200,200, 400, 200, 0, tr("Player 1 won !") , NULL);
 
         } else if ( this->getWinner() == PLAYER2 ) {
-            p.drawText(200,200, 400, 200,NULL, tr("Player 2 won !") , NULL);
-        } else {
-            p.drawText(200,200, 400, 200,NULL, tr("Error in the winner function!") , NULL);
+            p.drawText(200,200, 400, 200, 0, tr("Player 2 won !") , NULL);
 
+        } else {
+            p.drawText(200,200, 400, 200, 0, tr("Error in the winner function!") , NULL);
         }
     }
 }
-
 
 // Filter of KeyEvent
 bool MainWindow::eventFilter(QObject *object, QEvent *event)

@@ -47,7 +47,6 @@ public:
     void setSizeSquare(int value);
     void setSizeMaze(int value);
 
-    void setMaze(int **value);
 
 private:
     Player player1;
@@ -60,7 +59,6 @@ private:
     int sizeMaze;
 
     MazeGeneration* currentMaze;
-    void update ();
 };
 
 #endif // ONMAP_H

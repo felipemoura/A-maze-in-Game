@@ -15,11 +15,6 @@ OnMap::~OnMap()
 }
 
 // Methods
-void OnMap::update ()
-{
-
-}
-
 void OnMap::collision (int option, int direction, int desiredX, int desiredY)
 {
     int pos;
@@ -97,7 +92,6 @@ void OnMap::collision (int option, int direction, int desiredX, int desiredY)
         if ((option == PLAYER1)&&(player1.bonusNow()==0)) {
             //We put 0 where the bonus is.
             this->currentMaze->setPositionMaze(xSquare,ySquare,0);
-            //Position newSpeed= Position(player1.getSpeed().getX()/2,player1.getSpeed().getY()/2);
             Position newSpeed= Position(1,1);
             player1.setSpeed(newSpeed);
             player1.addBonus(pos);
@@ -106,7 +100,6 @@ void OnMap::collision (int option, int direction, int desiredX, int desiredY)
         if ((option == PLAYER2)&&(player2.bonusNow()==0)) {
             //We put 0 where the bonus is.
             this->currentMaze->setPositionMaze(xSquare,ySquare,0);
-            //Position newSpeed= Position(player2.getSpeed().getX()/2,player2.getSpeed().getY()/2);
             Position newSpeed= Position(1,1);
             player2.setSpeed(newSpeed);
             player2.addBonus(pos);
@@ -120,7 +113,6 @@ void OnMap::collision (int option, int direction, int desiredX, int desiredY)
         if ((option == PLAYER1)&&(player1.bonusNow()==0)) {
             //We put 0 where the bonus is.
             this->currentMaze->setPositionMaze(xSquare,ySquare,0);
-            //Position newSpeed= Position(player1.getSpeed().getX()*2,player1.getSpeed().getY()*2);
             Position newSpeed= Position(7,7);
             player1.setSpeed(newSpeed);
             player1.addBonus(pos);
@@ -129,7 +121,6 @@ void OnMap::collision (int option, int direction, int desiredX, int desiredY)
         if ((option == PLAYER2)&&(player2.bonusNow()==0)) {
             //We put 0 where the bonus is.
             this->currentMaze->setPositionMaze(xSquare,ySquare,0);
-            //Position newSpeed= Position(player2.getSpeed().getX()*2,player2.getSpeed().getY()*2);
             Position newSpeed= Position(7,7);
             player2.setSpeed(newSpeed);
             player2.addBonus(pos);
@@ -204,8 +195,4 @@ void OnMap::setSizeSquare(int value) {
 
 void OnMap::setSizeMaze(int value) {
     sizeMaze = value;
-}
-
-void OnMap::setMaze(int **value){
-    //maze = value;
 }
