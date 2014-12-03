@@ -69,12 +69,12 @@ int** MazeGeneration::mazeGeneration ()
 void MazeGeneration::addBonus()
 {
     //We put a new bonus on the Map
-        int a,b;
-        int bonus_added=0;
+    int a,b;
+    int bonus_added=0;
 
-     while (bonus_added ==0) {
-            a=rand() % getSize();
-            b=rand() % getSize();
+    while (bonus_added ==0) {
+        a=rand() % getSize();
+        b=rand() % getSize();
         if (maze[a][b] == 0) {
             maze[a][b] = 2 + rand() % 2;
             bonus_added += 1;
